@@ -6,6 +6,9 @@
     Verificar gostos do usuário e fazer recomendações de podcasts com base nessa informação
 4. Exibir total horas escutadas do podcaster.
     Exibir o somatório de horas escutadas em todos os podcasts de determinado produtor. Exibindo o ranking desse podcaster em relação aos demais da plataforma. 
+5. Produtores de podcast podem visualizar usuários que ouviram o podcast (teste).
+
+
 
 Cenários de falha:
 1. Usuários não permitidos a editar, caso tentem editar podcasts, receberão uma mensagem de falha.
