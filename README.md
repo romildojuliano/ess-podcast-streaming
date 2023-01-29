@@ -1,4 +1,20 @@
-# Estrutura do projeto a ser utilizado na disciplina de ESS
+# Podcast Streaming App  
+  
+Será criada uma app que permita o usuário adicionar e ouvir podcasts.
+
+<details><summary> Equipe </summary>
+
+Nome | Github | Email
+-- | -- | --
+Ednelson Luan Lourenço Cavalcanti | LuanCavalcanti07 | ellc@cin.ufpe.br
+Hugo Alves Cardoso | HACardoso | hac@cin.ufpe.br
+João Victor Belo Lopes Barreto | joaovictorbelo | jvblb@cin.ufpe.br
+Lucas Mota Mendes | lmm3 | lmm3@cin.ufpe.br
+Mateus Viégas Martins Farias | mattvie | mvmf@cin.ufpe.br
+Ramon Jorge Valença Wanderley | ramonwanderley | rjvw@cin.ufpe.br
+Romildo Juliano de Almeida Lira | romildojuliano | rjal@cin.ufpe.br
+
+</details>
 
 ### Dependências
 
