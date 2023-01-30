@@ -8,7 +8,8 @@ Feature: create new user
     And the system has no email "user@mail.com"
     When I try to register with the username "user01" and email "user@mail.com"
     Then the username "user01" is properly stored in the system
-    And I see a confirmation that my account is crated
+    And I see a confirmation that my account is created
+    And i am redirected to the personal information page
 
   Scenario: I try to register with an invalid password
     Given that i tried to register with the password "qwerty"
@@ -18,3 +19,8 @@ Feature: create new user
 
     //cenario de falha 1
     //cenario de falha 2
+
+  Scenario: add user photo
+    Given that i am in the personal information page
+    And upload a valid format picture from my device
+    Then the picture should be saved on my account in the database
