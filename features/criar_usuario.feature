@@ -23,4 +23,6 @@ Feature: create new user
   Scenario: add user photo
     Given that i am in the personal information page
     And upload a valid format picture from my device
+    And i save the information
     Then the picture should be saved on my account in the database
+    And i should see the validation that the picture was accepted
