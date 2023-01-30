@@ -24,3 +24,4 @@ Feature: create new user
     Given that i am in the personal information page
     And upload a valid format picture from my device
     Then the picture should be saved on my account in the database
+    And i should be redirected to the conclusion page
