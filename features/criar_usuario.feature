@@ -19,3 +19,8 @@ Feature: create new user
 
     //cenario de falha 1
     //cenario de falha 2
+
+  Scenario: add user photo
+    Given that i am in the personal information page
+    And upload a valid format picture from my device
+    Then the picture should be saved on my account in the database
