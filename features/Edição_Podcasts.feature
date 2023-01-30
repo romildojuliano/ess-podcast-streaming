@@ -8,7 +8,7 @@
     Exibir o somatório de horas escutadas em todos os podcasts de determinado produtor. Exibindo o ranking desse podcaster em relação aos demais da plataforma. 
     THEN (ALTERAÇÃO REQUISITADA PELOS STAKEHOLDERS 7ª questao letra e item i)
 5. Produtores de podcast podem visualizar usuários que ouviram o podcast (teste).
-6. (Cenario teste) Branch desenvolvimento
+6. (Novo Cenario teste) Branch fixesenvolvimento. Alteração 8ª questão
 
 Cenários de falha:
 1. Usuários não permitidos a editar, caso tentem editar podcasts, receberão uma mensagem de falha.
