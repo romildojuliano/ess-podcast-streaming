@@ -28,4 +28,5 @@ Feature: change account password
     And I write "1234" as my current password
     And I write "1234" as my new password
     Then I can see an error message
+    And I click to close the message
     And I'm still at the "Settings" page
