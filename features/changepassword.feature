@@ -36,6 +36,6 @@ Feature: change account password
     And my current password is "1234"
     When I select the Change Password option from the menu
     And I write "1234" as my current password
-    And I write "" as my new password
+    And I write nothing as my new password
     Then I can see an error message
     And I'm still at the "Settings" page
