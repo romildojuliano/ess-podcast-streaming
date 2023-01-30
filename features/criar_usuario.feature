@@ -1,6 +1,6 @@
 Feature: create new user
   As a potential user that wants to listen to podcasts
-  I want to create an account with an username, email and password where only i can login
+  I want to create an account with an username, email and password
   and where i can set my interests
   
   Scenario: new user registration
@@ -15,3 +15,6 @@ Feature: create new user
     And passwords must contain at least 8 characters and a number
     Then the account should not be created 
     And i should see an alert that the password must be stronger
+
+    //cenario de falha 1
+    //cenario de falha 2
