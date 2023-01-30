@@ -70,5 +70,27 @@ And o Podcast \'93Requisitos\'94 est\'e1 bloqueado pra download
 \f1\fs24 \cf0 \
 
 \f0\fs29\fsmilli14667 \cf2 Then aparecer\'e1 um alerta "Download Proibido\'94
-\f1\fs24 \cf0 .\outl0\strokewidth0 \strokec4 \
+\f1\fs24 \cf0 .\
+\
+\pard\pardeftab720\li1920\fi-1920\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf3 \outl0\strokewidth0 \strokec3 Cen\'e1rio: Listar podcasts do autor
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 Given eu estou logado como "Ramon Wanderley" na p\'e1gina do podcast "Requisitos" do autor "Breno Miranda"
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 And "Breno Miranda" tem publicado os podcasts "Requisitos, GIT, Valida\'e7\'e3o"
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 When eu navegar para p\'e1gina de autor "Breno Miranda"
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 Then aparecer\'e1 uma lista com os podcasts "Requisitos, GIT, Valida\'e7\'e3o"
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 And aparecer\'e1 o nome "Breno Miranda" e a foto "Breno Miranda.png".
+\f1\fs24 \cf0 \strokec4 \
+\pard\pardeftab720\li1920\fi-1920\partightenfactor0
+\cf0 \
 }
