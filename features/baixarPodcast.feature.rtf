@@ -31,6 +31,29 @@ Baixar podcast: o usu\'e1rio pode baixar o podcast e ver depois\
 \f0\fs29\fsmilli14667 \cf3 \strokec3 And far\'e1 download do podcast "Requisitos" no dispositivo
 \f1\fs24 \cf0 \strokec4 \
 
-\f0\fs29\fsmilli14667 \cf3 \strokec3 And o simbolo de "baixado" parecer\'e1.
+\f0\fs29\fsmilli14667 \cf3 \strokec3 And o simbolo de "baixado" aparecer\'e1.\
+\
+\pard\pardeftab720\li1920\fi-1920\partightenfactor0
+\cf3 Cen\'e1rio: Download corrompido
 \f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 Given eu estou logado como "Ramon Wanderley" na p\'e1gina do podcast "Requisitos"
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 And o Podcast "Requisitos" n\'e3o est\'e1 baixado no dispositivo\
+And o Podcast \'93Requisitos\'94 est\'e1 com uma vers\'e3o corrompida no servidor
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 When eu baixar o podcast "Requisitos"
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 Then aparecer\'e1 um alerta "Download\'85"
+\f1\fs24 \cf0 \strokec4 \
+
+\f0\fs29\fsmilli14667 \cf3 \strokec3 And far\'e1 download do podcast "Requisitos" no dispositivo\
+And o sistema identificar\'e1 falha no podcast \'93Requisitos\'94\
+And o alerta de \'93Arquivo corrompido\'94 aparecer\'e1.
+\f1\fs24 \cf0 \strokec4 \
+\pard\pardeftab720\li1920\fi-1920\partightenfactor0
+\cf0 \
 }
