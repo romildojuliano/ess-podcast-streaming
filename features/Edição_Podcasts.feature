@@ -7,7 +7,7 @@
 4. Exibir total horas escutadas do podcaster.
     Exibir o somatório de horas escutadas em todos os podcasts de determinado produtor. Exibindo o ranking desse podcaster em relação aos demais da plataforma. 
 5. Produtores de podcast podem visualizar usuários que ouviram o podcast (teste).
-
+6. (Cenario teste) Branch desenvolvimento
 
 
 Cenários de falha:
