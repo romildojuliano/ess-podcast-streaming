@@ -10,6 +10,9 @@
 5. Produtores de podcast podem visualizar usuários que ouviram o podcast (teste).
 6. (Novo Cenario teste) Branch fixesenvolvimento. Alteração 8ª questão
 7. Alteração branch master (questao 14 configuração)
+8. (Cenario teste) Branch desenvolvimento
+9. Primeira Alteração (Questão 14, roteiro configuração)
+
 
 Cenários de falha:
 1. Usuários não permitidos a editar, caso tentem editar podcasts, receberão uma mensagem de falha.
