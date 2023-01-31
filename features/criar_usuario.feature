@@ -29,3 +29,10 @@ Feature: create new user
     And i should be redirected to the conclusion page
 
   //TODO: Scenario: email ja cadastrado
+
+  Scenario: confirm password
+    Given that i am in the registration page
+    And i insert a password "StrongPassword01"
+    And i insert a password confirmation "StrongPassword02"
+    Then my account is not created
+    And i am notifyed that my passwords dont match
