@@ -1,0 +1,1 @@
+Scenario: Usuario quer adicionar outro usuario que ainda não segue
