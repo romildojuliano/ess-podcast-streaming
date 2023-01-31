@@ -6,3 +6,5 @@ Scenario: Seguir outro usuário que ainda não é seguido.
 
 Then 
 Scenario: Deixar de seguir um usuário que já é seguido
+
+Scenario: Seguir usuario que já é seguido
