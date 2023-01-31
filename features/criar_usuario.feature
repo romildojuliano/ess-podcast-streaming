@@ -1,8 +1,10 @@
+
+@userRegistration
 Feature: create new user
   As a potential user that wants to listen to podcasts
   I want to create an account with an username, email and password
   and where i can set my interests
-  
+
   Scenario: new user registration
     Given the system has no user with username "user01" 
     And the system has no email "user@mail.com"
