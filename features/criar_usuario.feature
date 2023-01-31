@@ -17,8 +17,8 @@ Feature: create new user
     Then the account should not be created 
     And i should see an alert that the password must be stronger
 
-    //cenario de falha 1
-    //cenario de falha 2
+  //TODO: cenario de falha 1
+  //TODO: cenario de falha 2
 
   Scenario: add user photo
     Given that i am in the personal information page
@@ -27,3 +27,5 @@ Feature: create new user
     Then the picture should be saved on my account in the database
     And i should see the validation that the picture was accepted
     And i should be redirected to the conclusion page
+
+  //TODO: Scenario: email ja cadastrado
