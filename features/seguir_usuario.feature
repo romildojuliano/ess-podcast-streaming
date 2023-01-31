@@ -5,3 +5,4 @@ Feature: Seguir Usuário
 Scenario: Seguir outro usuário que ainda não é seguido.
 
 Then 
+Scenario: Deixar de seguir um usuário que já é seguido
