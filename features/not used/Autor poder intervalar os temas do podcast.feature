@@ -1,0 +1,1 @@
+Autor pode sinalizar na barra do podcast quais os temas que estão sendo discutidos

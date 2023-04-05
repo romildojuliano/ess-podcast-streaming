@@ -18,14 +18,13 @@ Romildo Juliano de Almeida Lira | romildojuliano | rjal@cin.ufpe.br
 
 ### Dependências
 
-- Angular
-- Node 
+- React
+- Node
 - npm
 
 ### Instalando dependências 
 ```
 sudo apt install npm
-sudo npm install -g @angular/cli
 ```
 
 ### Modificando a versão do Node
@@ -51,7 +50,5 @@ npm start
 Iniciando o frontend
 ```
 cd web-app
-sudo npm install 
-cd src
-ng serve
+npm start
 ```
