@@ -39,15 +39,38 @@ module.exports = function(app){
         const userToFollow = req.query.user_to_follow;
         const users = db.readData();
         
-        const response = {}
+        let response = {}
 
         const id1 = users.findIndex(user => user.username === userID)
         const id2 = users.findIndex(user => user.username === userToFollow)
 
-        users[id1].following.push(userToFollow);
-        users[id2].followers.push(userID);
-
-        response.message = db.writeData(users);
+        if (id1 === -1) {
+            response = {
+                status: 401,
+                message: 'voce deve estar logado para seguir um usuario'
+            }
+        } else if (id2 === -1) {
+            response = {
+                status: 404,
+                message: 'usuario não encontrado'
+            }
+        } else if (id1 === id2) {
+            response = {
+                status: 406,
+                message: 'voce não pode seguir sua propria conta'
+            }
+        } else if (users[id1].following.includes(userToFollow)) {
+            response = {
+                status: 304,
+                message: 'você já segue esse usuario'
+            }
+        } else {
+            users[id1].following.push(userToFollow);
+            users[id2].followers.push(userID);
+    
+            response.message = db.writeData(users);
+            response.status = 200;
+        }
 
         res.json(response);
     })
