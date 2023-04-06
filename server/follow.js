@@ -18,4 +18,17 @@ module.exports = function(app){
 
         res.json(response);
     })
+
+    app.get('/users/:userId/followers', (req, res) => {
+        const userID = req.params.userId;
+        const data = db.getAllMatchingNames([userID])[0];
+
+        const response = {
+            status: data ? 200 : 404,
+            data: data ? data.followers : null,
+            message: data ? `${data.followers.length} seguidores` : 'usuário não encontrado'
+        }
+
+        res.json(response);
+    })
 }
