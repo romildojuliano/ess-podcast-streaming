@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
   const query = req.query.q;
   if (query) {
-      console.log(req.query.q);
       const results = db.getAllMatchingNames(query);
       res.json(results);
   } else {
