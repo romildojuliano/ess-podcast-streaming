@@ -31,4 +31,22 @@ module.exports = function(app){
 
         res.json(response);
     })
+
+    app.post('/users/:userId/following', (req, res) => {
+        const userID = req.params.userId;
+        const userToFollow = req.query.user_to_follow;
+        const users = db.readData();
+        
+        const response = {}
+
+        const id1 = users.findIndex(user => user.username === userID)
+        const id2 = users.findIndex(user => user.username === userToFollow)
+
+        users[id1].following.push(userToFollow);
+        users[id2].followers.push(userID);
+
+        response.message = db.writeData(users);
+
+        res.json(response);
+    })
 }
