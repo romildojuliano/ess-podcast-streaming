@@ -6,6 +6,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 require('./favorites')(app)
+require('./search')(app);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
