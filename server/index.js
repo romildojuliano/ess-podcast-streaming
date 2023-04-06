@@ -9,7 +9,8 @@ const JSONDatabase = require('./JSONDatabase');
 
 const db = new JSONDatabase('./samples/users.json');
 
-require('./favorites')(app)
+require('./favorites')(app);
+require('./follow')(app);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
