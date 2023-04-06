@@ -45,23 +45,27 @@ module.exports = function(app){
         const id2 = users.findIndex(user => user.username === userToFollow)
 
         if (id1 === -1) {
+            res.status(401);
             response = {
-                status: 401,
+                data: {},
                 message: 'voce deve estar logado para seguir um usuario'
             }
         } else if (id2 === -1) {
+            res.status(404);
             response = {
-                status: 404,
+                data: {},
                 message: 'usuario não encontrado'
             }
         } else if (id1 === id2) {
+            res.status(406);
             response = {
-                status: 406,
+                data: {},
                 message: 'voce não pode seguir sua propria conta'
             }
         } else if (users[id1].following.includes(userToFollow)) {
+            res.status(400);
             response = {
-                status: 304,
+                data: users[id1].following,
                 message: 'você já segue esse usuario'
             }
         } else {
@@ -69,7 +73,8 @@ module.exports = function(app){
             users[id2].followers.push(userID);
     
             response.message = db.writeData(users);
-            response.status = 200;
+            response.data = users[id1].following;
+            res.status(200);
         }
 
         res.json(response);
@@ -81,15 +86,37 @@ module.exports = function(app){
         const userToUnfollow = req.query.user_to_unfollow;
         const users = db.readData();
         
-        const response = {}
+        let response = {}
 
         const id1 = users.findIndex(user => user.username === userID)
         const id2 = users.findIndex(user => user.username === userToUnfollow)
 
-        users[id1].following.pop(userToUnfollow);
-        users[id2].followers.pop(userID);
-
-        response.message = db.writeData(users);
+        if (id1 === -1) {
+            res.status(401);
+            response = {
+                data: {},
+                message: 'voce deve estar logado para deixar de seguir um usuario'
+            }
+        } else if (id2 === -1) {
+            res.status(404);
+            response = {
+                data: {},
+                message: 'usuario não encontrado'
+            }
+        } else if (!users[id1].following.includes(userToUnfollow)) {
+            res.status(400);
+            response = {
+                data: {},
+                message: 'você não segue esse usuario'
+            }
+        } else {
+            users[id1].following.pop(userToUnfollow);
+            users[id2].followers.pop(userID);
+    
+            response.message = db.writeData(users);
+            response.data = users[id1].following;
+            res.status(200);
+        }
 
         res.json(response);
     })
