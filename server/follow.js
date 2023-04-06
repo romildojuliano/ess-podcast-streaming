@@ -19,6 +19,7 @@ module.exports = function(app){
         res.json(response);
     })
 
+    //function to get users that follow me
     app.get('/users/:userId/followers', (req, res) => {
         const userID = req.params.userId;
         const data = db.getAllMatchingNames([userID])[0];
@@ -32,6 +33,7 @@ module.exports = function(app){
         res.json(response);
     })
 
+    //function to create the follow relation
     app.post('/users/:userId/following', (req, res) => {
         const userID = req.params.userId;
         const userToFollow = req.query.user_to_follow;
@@ -44,6 +46,25 @@ module.exports = function(app){
 
         users[id1].following.push(userToFollow);
         users[id2].followers.push(userID);
+
+        response.message = db.writeData(users);
+
+        res.json(response);
+    })
+
+    //function to undo the follow relation
+    app.delete('/users/:userId/following', (req, res) => {
+        const userID = req.params.userId;
+        const userToUnfollow = req.query.user_to_unfollow;
+        const users = db.readData();
+        
+        const response = {}
+
+        const id1 = users.findIndex(user => user.username === userID)
+        const id2 = users.findIndex(user => user.username === userToUnfollow)
+
+        users[id1].following.pop(userToUnfollow);
+        users[id2].followers.pop(userID);
 
         response.message = db.writeData(users);
 
