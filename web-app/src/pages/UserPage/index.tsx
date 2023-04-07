@@ -22,25 +22,34 @@ export default function UserPage(){
     followers: []
   });
   const [loggedUser, setLoggedUser] = useState('')
+
+  //variavel para saber se o usuario logado ja segue o usuario da página
   const [doIFollow, setDoIFollow] = useState(false)
 
+  //função para pegar dados do usuario logado no sistema do localStorage do navegador
   useEffect(() => {
     const user = localStorage.getItem('user');
     setLoggedUser(user ? user : '');
   }, [])
 
+  //checa se o usuario segue
   useEffect(() => {
     setDoIFollow(userData.followers.includes(loggedUser))
   }, [loggedUser, userData.followers])
 
+  //função para começar a seguir
+  //TODO transformar em função assincrona com requisição ao back
   const startFollowing = () => {
     setUserData({...userData, followers: [...userData.followers, loggedUser]})
   }
 
+  //função para parar de seguir
+  //TODO transformar em função assincrona com requisição ao back
   const stopFollowing = () => {
     setUserData({...userData, followers: userData.followers.filter(a => a !== loggedUser)})
   }
   
+  //TODO adicionar os popups de confirmação
   return (
     <Box bgColor="#1E1E1E" h="90vh">
       <Flex alignItems="flex-end" bgColor="#30332D" h="300px" w="100vw" padding="50px">
@@ -54,6 +63,7 @@ export default function UserPage(){
           </Flex>
         </Flex>
       </Flex>
+      <Heading color="white">Podcasts do Autor...</Heading>
     </Box>
   );
 }
