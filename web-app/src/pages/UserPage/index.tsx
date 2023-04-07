@@ -5,7 +5,15 @@ import {
   Image,
   Heading,
   Text,
-  Button
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { useParams } from "react-router-dom";
 import pfp from '../../styles/assets/nopfp.png'
@@ -22,6 +30,8 @@ export default function UserPage(){
     followers: []
   });
   const [loggedUser, setLoggedUser] = useState('')
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   //variavel para saber se o usuario logado ja segue o usuario da página
   const [doIFollow, setDoIFollow] = useState(false)
@@ -47,11 +57,29 @@ export default function UserPage(){
   //TODO transformar em função assincrona com requisição ao back
   const stopFollowing = () => {
     setUserData({...userData, followers: userData.followers.filter(a => a !== loggedUser)})
+    onClose();
   }
   
-  //TODO adicionar os popups de confirmação
   return (
     <Box bgColor="#1E1E1E" h="90vh">
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent bgColor="#252525" color="#eeeeee">
+          <ModalHeader>Deixar de seguir?</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>Tem certeza que deseja deixar de seguir {userData.name}? você não receberá mais notificações de novos podcasts</Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='red' mr={3} onClick={stopFollowing}>
+              Sim, deixar de seguir
+            </Button>
+            <Button variant='ghost' onClick={onClose}>Não, continuar seguindo</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
       <Flex alignItems="flex-end" bgColor="#30332D" h="300px" w="100vw" padding="50px">
         <Flex>
           <Image src={pfp} alt="pfp" w="124px"/>
@@ -59,7 +87,7 @@ export default function UserPage(){
             <Heading>{`${userData.name} (${username})`}</Heading>
             <Text fontSize="20px">{userData.followers.length} seguidores</Text>
             {!doIFollow && <Button color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={startFollowing}>SEGUIR</Button>}
-            {doIFollow && <Button color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={stopFollowing}>SEGUINDO</Button>}
+            {doIFollow && <Button color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={onOpen}>SEGUINDO</Button>}
           </Flex>
         </Flex>
       </Flex>
