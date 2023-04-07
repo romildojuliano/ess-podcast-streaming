@@ -1,4 +1,4 @@
-import { UserTest, Home, Podcast, Explore} from './pages';
+import { UserTest, Home, Podcast, Explore, Politicsseemore, Economyseemore} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function Router() {
@@ -10,6 +10,8 @@ function Router() {
           <Route path="/userTest" element={<UserTest />} />
           <Route path="/podcast" element={<Podcast />} />
           <Route path="/explore" element={<Explore/>} />
+          <Route path="/Politicsseemore" element={<Politicsseemore />} />
+          <Route path="/Economyseemore" element={<Economyseemore/>} />
         </Routes>
       </BrowserRouter>
   );
