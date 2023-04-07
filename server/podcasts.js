@@ -48,7 +48,7 @@ module.exports = function (app) {
             }
 
             data.push(newPodcast)
-            fs.writeFileSync('./samples/podcasts.json', JSON.stringify(data))
+            fs.writeFileSync('./samples/podcasts.json', JSON.stringify(data, false, "\t"))
             res.send(newPodcast)
         }
     })
