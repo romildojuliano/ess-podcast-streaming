@@ -12,27 +12,11 @@ const db = new JSONDatabase('./samples/users.json');
 
 require('./favorites')(app);
 require('./follow')(app);
-
-
-
-app.get('/podcasts/politics', (req, res) =>{
-  let rawdata = fs.readFileSync('./samples/podcasts.json', 'utf-8');
-  let podcasts = JSON.parse(rawdata)
-  let podpolitics = podcasts.filter(x=> x.subject=="Politics")
-  res.send(podpolitics)
-})
-
-app.get('/podcasts/economy', (req,res) =>{
-  var rawdata = fs.readFileSync('./samples/podcasts.json', 'utf-8');
-  var podcasts = JSON.parse(rawdata)
-  var podeconomy = podcasts.filter(x=> x.subject=="Economy")
-  res.send(podeconomy)
-})
+require('./podcasts')(app)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
 
 app.get('/search', (req, res) => {
   const query = req.query.q;
