@@ -32,14 +32,14 @@ export default function UserPage(){
   
   return (
     <Box bgColor="#1E1E1E" h="90vh">
-      <Flex alignItems="flex-end" bgColor="#30332D" h="300px" w="100vw">
+      <Flex alignItems="flex-end" bgColor="#30332D" h="300px" w="100vw" padding="50px">
         <Flex>
-          <Image src={pfp} alt="pfp" w="100px"/>
-          <Flex flexDir="column">
+          <Image src={pfp} alt="pfp" w="124px"/>
+          <Flex flexDir="column" color="white" marginLeft="25px" alignItems="flex-start" justifyContent="space-evenly">
             <Heading>{userData.nome}</Heading>
-            <Text>{userData.followersCount}</Text>
-            {doIFollow && <Button>Seguir</Button>}
-            {!doIFollow && <Button>Deixar de Seguir</Button>}
+            <Text fontSize="20px">{userData.followersCount}</Text>
+            {!doIFollow && <Button color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px">SEGUIR</Button>}
+            {doIFollow && <Button color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px">SEGUINDO</Button>}
           </Flex>
         </Flex>
       </Flex>
