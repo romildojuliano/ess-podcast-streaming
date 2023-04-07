@@ -15,14 +15,14 @@ require('./favorites')(app)
 
 
 app.get('/podcasts/politics', (req, res) =>{
-  let rawdata = fs.readFileSync('./samples/podcasts.json');
+  let rawdata = fs.readFileSync('./samples/podcasts.json', 'utf-8');
   let podcasts = JSON.parse(rawdata)
   let podpolitics = podcasts.filter(x=> x.subject=="Politics")
   res.send(podpolitics)
 })
 
 app.get('/podcasts/economy', (req,res) =>{
-  var rawdata = fs.readFileSync('./samples/podcasts.json');
+  var rawdata = fs.readFileSync('./samples/podcasts.json', 'utf-8');
   var podcasts = JSON.parse(rawdata)
   var podeconomy = podcasts.filter(x=> x.subject=="Economy")
   res.send(podeconomy)
