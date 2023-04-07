@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 
-const Links = ['Seguindo', 'Histórico', 'Favoritos'];
+const Links = ['Explore','Seguindo', 'Histórico', 'Favoritos'];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
