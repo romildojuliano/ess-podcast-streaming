@@ -13,7 +13,7 @@ module.exports = function (app) {
             res.status(400).send('Invalid Request (Author Missing').end();
         } else {
 
-            var data = JSON.parse(fs.readFileSync('./sample/podcasts.json', 'utf8'))
+            var data = JSON.parse(fs.readFileSync('./samples/podcasts.json', 'utf8'))
 
             var link = req.body.link;
             //var link = "https://www.youtube.com/watch?v=3Hp-yUDSF8g";
@@ -48,8 +48,8 @@ module.exports = function (app) {
             }
 
             data.push(newPodcast)
-            fs.writeFileSync('./sample/podcasts.json', JSON.stringify(data, false, "\t"))
-            res.send(data)
+            fs.writeFileSync('./samples/podcasts.json', JSON.stringify(data))
+            res.send(newPodcast)
         }
     })
 
