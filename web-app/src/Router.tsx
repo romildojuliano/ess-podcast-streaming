@@ -1,4 +1,4 @@
-import { UserTest, Home, Podcast } from './pages';
+import { UserTest, Home, Podcast, Explore} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function Router() {
@@ -9,6 +9,7 @@ function Router() {
           <Route path="/" element={<Home />} />
           <Route path="/userTest" element={<UserTest />} />
           <Route path="/podcast" element={<Podcast />} />
+          <Route path="/explore" element={<Explore/>} />
         </Routes>
       </BrowserRouter>
   );

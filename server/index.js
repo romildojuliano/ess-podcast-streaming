@@ -1,7 +1,8 @@
+var fs = require('fs')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
-const port = 3000
+const port = 4000
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -10,6 +11,22 @@ const JSONDatabase = require('./JSONDatabase');
 const db = new JSONDatabase('./samples/users.json');
 
 require('./favorites')(app)
+
+
+
+app.get('/podcasts/politics', (req, res) =>{
+  let rawdata = fs.readFileSync('./samples/podcasts.json');
+  let podcasts = JSON.parse(rawdata)
+  let podpolitics = podcasts.filter(x=> x.subject=="Politics")
+  res.send(podpolitics)
+})
+
+app.get('/podcasts/economy', (req,res) =>{
+  var rawdata = fs.readFileSync('./samples/podcasts.json');
+  var podcasts = JSON.parse(rawdata)
+  var podeconomy = podcasts.filter(x=> x.subject=="Economy")
+  res.send(podeconomy)
+})
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
