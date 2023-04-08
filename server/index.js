@@ -1,5 +1,6 @@
 var fs = require('fs')
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser');
 const port = 4000
@@ -22,7 +23,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
+  console.log('Search Request Recieved')
   const query = req.query.q;
+  console.log(query)
   if (query) {
       const results = db.getAllMatchingNames(query);
       res.json(results);
@@ -33,5 +36,5 @@ app.get('/search', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port} with cors`)
 })
