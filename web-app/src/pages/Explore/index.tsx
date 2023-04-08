@@ -82,7 +82,7 @@ export default function CaptionCarousel() {
 
     return (
       <Heading>
-          <Heading className='Topic'>Politics <Link href='/Politicsseemore' color='teal.500'> see more</Link>
+          <Heading className='Topic'>Politics <Link className='Politics' href='/Politicsseemore' color='teal.500'> see more</Link>
             <SimpleGrid minChildWidth='120px' spacing='40px'>
               {cardsPolitics.map((card, index) => (
                 <Box
@@ -112,7 +112,7 @@ export default function CaptionCarousel() {
               ))}
             </SimpleGrid>
           </Heading>
-          <Heading className='Topic'>Economy <Link href='/Economyseemore' color='teal.500'> see more</Link>
+          <Heading className='Topic'>Economy <Link className='Economy' href='/Economyseemore' color='teal.500'> see more</Link>
                 <SimpleGrid minChildWidth='120px' spacing='40px'>
                   
                 {cardsEconomy.map((card, index) => (

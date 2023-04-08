@@ -9,8 +9,8 @@ Feature: Podcast subject grouping
     
     Scenario: Acess Podcasts by subject
         Given I am at the "Podcasts" menu
-        When I select the "see all" button of the "Finances" type podcasts
-        Then I am redirectet to the "Finances" podcasts menu
+        When I select the "see all" button of the "Politics" type podcasts
+        Then I am redirectet to the "Politics" podcasts menu
     
     Scenario: Podcast Insertion in subject group
         Given I am a podcaster loged in the system

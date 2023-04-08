@@ -11,6 +11,10 @@ Feature: Podcast subject grouping
     
     Scenario: Acess Podcasts by subject
         Given I am at the "Podcasts" menu
-        When I select the "see all" button of the "Finances" type podcasts
-        Then I am redirectet to the "Finances" podcasts menu
+        When I select the "see all" button of the "Politics" type podcasts
+        Then I am redirectet to the "Politics" podcasts menu
  
+    Scenario: Podcast Insertion in subject group
+        Given I am a podcaster loged in the system
+        When I upload the podcast "The 2023 FED interest rate" whit the tag of subject "Finance"
+        Then The podcast "The 2024 FED interest rate" is propperly inserted at the list of podcasts with subject "Finance"
