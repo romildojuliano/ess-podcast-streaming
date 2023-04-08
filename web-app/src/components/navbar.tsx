@@ -20,7 +20,10 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import React, { useState } from 'react';
+import Router from "../Router"
 import { useNavigate } from 'react-router-dom';
+
+
 
 const Links = ['Explore','Seguindo', 'Histórico', 'Favoritos'];
 
@@ -44,6 +47,21 @@ export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate(); 
+
+  function handleSubmit(event) {
+
+   // get the navigate function from the router
+
+    event.preventDefault(); // prevent default form submission behavior
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const query = formData.get('q'); // get the value of the input field
+    
+     navigate(`/search?q=${query}`); // navigate to the /search page with the query as a URL parameter
+    // redirect to the /search page with the query as a URL parameter
+  }
 
   return (
     <>
@@ -54,7 +72,7 @@ export default function Navbar() {
                 <Image src={require('../styles/assets/LogoMarca.png')} height="24px" alt='Podshare' />
             </Box>
             <Spacer />
-            <Flex as='form' alignItems={'flex-start'}>
+            <Flex as='form' alignItems={'flex-start'} onSubmit={handleSubmit}>
               <Input
                 type='text'
                 name='q'
