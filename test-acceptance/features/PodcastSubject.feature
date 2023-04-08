@@ -16,5 +16,5 @@ Feature: Podcast subject grouping
  
     Scenario: Podcast Insertion in subject group
         Given I am a podcaster loged in the system
-        When I upload the podcast "The 2023 FED interest rate" whit the tag of subject "Finance"
-        Then The podcast "The 2024 FED interest rate" is propperly inserted at the list of podcasts with subject "Finance"
+        When I upload the podcast "Brazilian Elections" whit the tag of subject "Politics"
+        Then The podcast "Brazilian Elections" is propperly inserted at the list of podcasts with subject "Politics"

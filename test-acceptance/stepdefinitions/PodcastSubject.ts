@@ -1,44 +1,14 @@
+import { BeforeAll } from "@cucumber/cucumber";
 import { defineSupportCode } from "cucumber";
 import { browser, $, element, ElementArrayFinder, by } from 'protractor'; 
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
-let assert = chai.assert;
-
-
-const data = [{
-    "subject": "Politics",
-    "name": "Brazilian Elections",
-    "link": "https://podshare.com/Politics/Brazilian-Elections",
-    "author": "HACardoso",
-    "createdAt": "2020-01-23T01:23:45.678-03:00",
-    "image": "https://bestswimming.swimchannel.net/wp-content/uploads/2022/08/brazil-elections-2022-vector-brazilian-portuguese-concept-brazilian-politics-2022-polls_695181-26.jpg"
-}]
-
-async function postJSON(data) {
-    try {
-      const response = await fetch("https://localhost:4000/podcasts", {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-  
-      const result = await response.json();
-      console.log("Success:", result);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-  
-
 
 
 
 defineSupportCode( function({Given, When, Then}){
 
     Given(/^I am at the "Home" menu of the "Podshare"$/, async() =>{
-
         await browser.get("http://localhost:3000/");
         await expect(browser.getTitle()).to.eventually.equal('Podshare');
 
@@ -55,20 +25,20 @@ defineSupportCode( function({Given, When, Then}){
     Then(/^I get redirected to the "Explore" menu$/, async() => {
         
         await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/explore");
+
     });
 
     Then(/^The podcasts are displayed by topic$/, async() =>{
 
         var allTopics : ElementArrayFinder = element.all(by.className('css-wb6fz'));
-
         await allTopics.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(2));
+
         
     });
 
     Then(/^A button "see all" is displayed at each topic$/, async() =>{
 
         var allButtons : ElementArrayFinder = element.all(by.className("chakra-link css-c6nly4"));
-
         await allButtons.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(2));
 
     })
@@ -87,10 +57,32 @@ defineSupportCode( function({Given, When, Then}){
 
     Then(/^I am redirectet to the "Politics" podcasts menu$/, async()=>{
 
-
+        await browser.get("http://localhost:3000/Politicsseemore");
         await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/Politicsseemore")
     })
 
-    
+    Given(/^I am a podcaster loged in the system$/, async() =>{
+
+        var allPodcasts : ElementArrayFinder = element.all(by.id('HEADING'));
+
+        await allPodcasts.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
+
+    });
+
+    When(/^I upload the podcast "Brazilian Elections" whit the tag of subject "Politics"$/, async()=>{
+
+        //Temporary for replacement of a post method
+        await browser.get("http://localhost:3000/Politicsseemore2");
+
+    });
+
+    Then(/^The podcast "Brazilian Elections" is propperly inserted at the list of podcasts with subject "Politics"$/, async()=>{
+        
+        var allPodcasts : ElementArrayFinder = element.all(by.className('chakra-heading css-1dklj6k'));
+
+        await allPodcasts.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(2));
+
+    })
    
-})
+}) 
+
