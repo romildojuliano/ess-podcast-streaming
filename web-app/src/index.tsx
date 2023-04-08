@@ -15,4 +15,4 @@ const theme = extendTheme({
     },
   });
 
-ReactDOM.render( <ChakraProvider theme={theme}><Navbar/><Router /></ChakraProvider>, document.getElementById('root'));
+ReactDOM.render( <ChakraProvider theme={theme}><Router /></ChakraProvider>, document.getElementById('root'));
