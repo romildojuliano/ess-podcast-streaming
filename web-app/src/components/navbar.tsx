@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Flex,
@@ -17,8 +17,14 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
-  Image
+  Image,
+  Input
 } from '@chakra-ui/react';
+
+import { AddIcon } from '@chakra-ui/icons';
+
+import Router from "../Router"
+import { useNavigate } from 'react-router-dom';
 
 import { Favorite, MusicHistory, People } from '../Icons';
 const Links = ['Explore','Seguindo', 'Histórico', 'Favoritos'];
@@ -41,8 +47,27 @@ const NavLink = ({ children }: { children: ReactNode }) => (
   </Link>
 );
 
+
 export default function Navbar() {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate(); 
+
+  function handleSubmit(event) {
+
+   // get the navigate function from the router
+
+    event.preventDefault(); // prevent default form submission behavior
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const query = formData.get('q'); // get the value of the input field
+    
+     navigate(`/search?q=${query}`); // navigate to the /search page with the query as a URL parameter
+    // redirect to the /search page with the query as a URL parameter
+  }
 
   return (
     <>
@@ -52,7 +77,24 @@ export default function Navbar() {
             <Box justifySelf={'start'}>
                 <Image src={require('../styles/assets/LogoMarca.png')} height="24px" alt='Podshare' />
             </Box>
+            <Spacer />
+            <Flex as='form' alignItems={'flex-start'} onSubmit={handleSubmit}>
+              <Input
+                type='text'
+                name='q'
+                placeholder='Search Users'
+                color='white'
+                bg='gray.800'
+                _placeholder={{ color: 'gray.400' }}
+                mr={2}
+              />
+              <Button colorScheme='teal' type='submit'>
+                Search
+              </Button>
+            </Flex>
             <Spacer/>
+            
+            
             <HStack
               as={'nav'}
               spacing={4}
@@ -66,6 +108,8 @@ export default function Navbar() {
               ))}
               
             </HStack>
+
+            
           <Flex alignItems={'center'}>
             
             <Menu>

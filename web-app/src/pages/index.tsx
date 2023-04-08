@@ -5,6 +5,7 @@ import Explore from './Explore'
 import Politicsseemore from './Politicsseemore'
 import Economyseemore from './Economyseemore'
 import Politicsseemore2 from './Politicsseemore2'
+import Search from './Search'
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     Explore,
     Politicsseemore,
     Economyseemore,
-    Politicsseemore2
+    Politicsseemore2,
+    Search
 };
