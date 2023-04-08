@@ -3,7 +3,23 @@ module.exports = function(app){
 
   app.get('/favorites/:username', (req, res) => {
     var data = JSON.parse(fs.readFileSync('./samples/favorites.json', 'utf8')); 
+    var podcastsData = JSON.parse(fs.readFileSync('./samples/podcasts.json', 'utf8')); 
+
     var result = data[req.params.username] != null ? data[req.params.username].filter(favorite => favorite.username == req.params.username) : [];
+    result = result.map(favorite => {
+      var podcast = podcastsData.find(podcast => podcast.name == favorite.podcast);
+      if(podcast != null)
+      {
+        return podcast;
+      }
+      else {
+        return {
+          name: favorite.podcast,
+          created_at: favorite.created_at
+        }
+      }
+
+    })
     res.send(result);
   })
 

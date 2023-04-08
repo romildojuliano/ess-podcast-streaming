@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { Star, StarOff } from '../../utils/StarIcons';
 import { Previous,Play,Next} from '../../Icons';
+
 interface PodcastPageProps {
   podcast: {
     name: string,
@@ -79,7 +80,7 @@ class PodcastPage extends React.Component<PodcastPageProps, PodcastPageState> {
             {this.props.podcast.author}
           </Text>
           <Text   mt={2} fontSize='sm' fontWeight=''>
-            <Badge borderRadius={'16px'}  variant={'subtle'} ml='1' mr='2' fontSize='1.2em' colorScheme='blue'>
+            <Badge borderRadius='full' variant={'subtle'} ml='1' mr='2' fontSize='1.2em' colorScheme='blue'>
             {this.props.podcast.subject}
             </Badge>
             {this.PublishedAt()}
