@@ -4,8 +4,8 @@ const Home: React.ElementType = () => (
   <div>
     <h1>Podshare routes:</h1>
     <nav>
-      <li><a href="/userTest">UserTest</a></li>
-      <li><a href="/explore">Explore</a></li>
+      <li className="userTest"><a href="/userTest">UserTest</a></li>
+      <li className="Explore"><a href="/explore">Explore</a></li>
     </nav>
   </div>
 
