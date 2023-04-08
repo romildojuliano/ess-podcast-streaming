@@ -1,9 +1,9 @@
 import UserTest from './UserTest'
 import Home from './Home'
-import Podcast from './Podcast'
+import PodcastPage from './Podcast'
 
 export {
     Home,
     UserTest,
-    Podcast
+    PodcastPage
 };
