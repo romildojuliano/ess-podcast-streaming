@@ -6,6 +6,7 @@ import {
   Heading,
   Text,
   Button,
+  Link,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -28,6 +29,13 @@ interface IUser {
   history: string[];
 }
 
+interface IPodcast {
+  name: string;
+  link: string;
+  subject: string;
+  image: string;
+}
+
 export default function UserPage(){
   const { username } = useParams();
   const [userData, setUserData] = useState<IUser>({
@@ -39,6 +47,7 @@ export default function UserPage(){
     following: [],
     history: []
   });
+  const [userPodcasts, setUserPodcasts] = useState<IPodcast[]>()
   const [loggedUser, setLoggedUser] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -51,7 +60,8 @@ export default function UserPage(){
   useEffect(() => {
     const getUserData = async() => {
       const { data } = await (await fetch(`http://localhost:4000/getUser/${username}`)).json()
-      setUserData(data.userData)
+      setUserData(data.userData);
+      setUserPodcasts(data.podcasts);
     };
 
     const user = localStorage.getItem('user');
@@ -121,7 +131,17 @@ export default function UserPage(){
           </Flex>
         </Flex>
       </Flex>
-      <Heading color="white">Podcasts do Autor...</Heading>
+
+      <Flex flexDir="row" h="400px" w="100vw" padding="50px">
+      {userPodcasts?.map(podcast => 
+        <Flex flexDir="column" color="white" w="fit-content" margin="0 25px" alignItems="flex-start" justifyContent="space-evenly">
+          <Image src={podcast.image} alt="podcast image" boxSize="200px" minHeight="200px" objectFit="cover" borderRadius="10px"/>
+          <Heading marginTop="10px" fontSize="20px">{podcast.name}</Heading>
+          <Text>{podcast.subject}</Text>
+          <Link href={podcast.link}>Ver podcast</Link>
+        </Flex>
+      )}
+      </Flex>
     </Box>
   );
 }

@@ -13,7 +13,6 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  Icon,
   useDisclosure,
   useColorModeValue,
   Stack,
@@ -27,13 +26,24 @@ import Router from "../Router"
 import { useNavigate } from 'react-router-dom';
 
 import { Favorite, MusicHistory, People } from '../Icons';
-const Links = ['Explore','Seguindo', 'Histórico', 'Favoritos'];
+const Links = [
+  {nome: 'Explore', href: "#"},
+  {nome: 'Seguindo', href: "http://localhost:3000/following"},
+  {nome: 'Histórico', href: "#"},
+  {nome: 'Favoritos', href: "#"}
+];
 const IconLinks = [People, People, MusicHistory , Favorite];
 const NavBarPageButton = {
   className: "navbar_page_link",
   textAlign: "{'center'}"
 }
-const NavLink = ({ children }: { children: ReactNode }) => (
+
+type NavProps = {
+  href: string,
+  children: ReactNode
+}
+
+const NavLink = (props: NavProps) => (
   <Link
     px={2}
     py={1}
@@ -42,8 +52,9 @@ const NavLink = ({ children }: { children: ReactNode }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'#'}>
-    {children}
+    href={props?.href}
+  >
+    {props.children}
   </Link>
 );
 
@@ -100,10 +111,10 @@ export default function Navbar() {
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
               {Links.map((link, index) => (
-              <NavLink {...NavBarPageButton}  key={link}>
-                {React.createElement(IconLinks[index])}
-                <br/>
-                {link}
+                <NavLink {...NavBarPageButton}  key={link.nome} href={link.href}>
+                  {React.createElement(IconLinks[index])}
+                  <br/>
+                  {link.nome}
                 </NavLink>
               ))}
               
