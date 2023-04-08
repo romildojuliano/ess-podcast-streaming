@@ -19,17 +19,28 @@ import { useParams } from "react-router-dom";
 import pfp from '../../styles/assets/nopfp.png'
 
 interface IUser {
-  name: string;
+  email: string;
+  username: string;
+  password: string;
+  createdAt: string;
   followers: string[];
+  following: string[];
+  history: string[];
 }
 
 export default function UserPage(){
   const { username } = useParams();
   const [userData, setUserData] = useState<IUser>({
-    name: 'Breno Miranda',
-    followers: []
+    email: '',
+    username: '',
+    password: '',
+    createdAt: '',
+    followers: [],
+    following: [],
+    history: []
   });
   const [loggedUser, setLoggedUser] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -38,9 +49,16 @@ export default function UserPage(){
 
   //função para pegar dados do usuario logado no sistema do localStorage do navegador
   useEffect(() => {
+    const getUserData = async() => {
+      const { data } = await (await fetch(`http://localhost:4000/getUser/${username}`)).json()
+      setUserData(data.userData)
+    };
+
     const user = localStorage.getItem('user');
-    setLoggedUser(user ? user : '');
-  }, [])
+    setLoggedUser(user ? user : '')
+
+     if (!loading) getUserData()
+  }, [username, loading]);
 
   //checa se o usuario segue
   useEffect(() => {
@@ -48,16 +66,28 @@ export default function UserPage(){
   }, [loggedUser, userData.followers])
 
   //função para começar a seguir
-  //TODO transformar em função assincrona com requisição ao back
-  const startFollowing = () => {
-    setUserData({...userData, followers: [...userData.followers, loggedUser]})
+  const startFollowing = async () => {
+    setLoading(true)
+    const { message } = await (
+      await fetch(`http://localhost:4000/users/${loggedUser}/following?user_to_follow=${username}`, {
+        method: 'POST'
+      })
+    ).json()
+    if(message) alert(message)
+    setLoading(false)
   }
 
   //função para parar de seguir
-  //TODO transformar em função assincrona com requisição ao back
-  const stopFollowing = () => {
-    setUserData({...userData, followers: userData.followers.filter(a => a !== loggedUser)})
+  const stopFollowing = async () => {
+    setLoading(true)
+    const { message } = await (
+      await fetch(`http://localhost:4000/users/${loggedUser}/following?user_to_unfollow=${username}`, {
+        method: 'DELETE'
+      })
+    ).json()
+    if(message) alert(message)
     onClose();
+    setLoading(false)
   }
   
   return (
@@ -68,7 +98,7 @@ export default function UserPage(){
           <ModalHeader>Deixar de seguir?</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Tem certeza que deseja deixar de seguir {userData.name}? você não receberá mais notificações de novos podcasts</Text>
+            <Text>Tem certeza que deseja deixar de seguir {userData.username}? você não receberá mais notificações de novos podcasts</Text>
           </ModalBody>
 
           <ModalFooter>
@@ -84,10 +114,10 @@ export default function UserPage(){
         <Flex>
           <Image src={pfp} alt="pfp" w="124px"/>
           <Flex flexDir="column" color="white" marginLeft="25px" alignItems="flex-start" justifyContent="space-evenly">
-            <Heading>{`${userData.name} (${username})`}</Heading>
+            <Heading>{userData.username}</Heading>
             <Text fontSize="20px">{userData.followers.length} seguidores</Text>
-            {!doIFollow && <Button color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={startFollowing}>SEGUIR</Button>}
-            {doIFollow && <Button color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={onOpen}>SEGUINDO</Button>}
+            {!doIFollow && <Button isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={startFollowing}>SEGUIR</Button>}
+            {doIFollow && <Button isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={onOpen}>SEGUINDO</Button>}
           </Flex>
         </Flex>
       </Flex>
