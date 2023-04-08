@@ -19,10 +19,10 @@ import {
   Stack,
   Image
 } from '@chakra-ui/react';
-import { Favorite, MusicHistory, People } from '../Icons';
 
-const Links = ['Seguindo', 'Histórico',  'Favoritos'];
-const IconLinks = [People, MusicHistory , Favorite];
+import { Favorite, MusicHistory, People } from '../Icons';
+const Links = ['Explore','Seguindo', 'Histórico', 'Favoritos'];
+const IconLinks = [People, People, MusicHistory , Favorite];
 const NavBarPageButton = {
   className: "navbar_page_link",
   textAlign: "{'center'}"
