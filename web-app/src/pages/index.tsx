@@ -4,8 +4,7 @@ import PodcastPage from './Podcast'
 import Explore from './Explore'
 import Politicsseemore from './Politicsseemore'
 import Economyseemore from './Economyseemore'
-import UserPage from './UserPage'
-
+import Politicsseemore2 from './Politicsseemore2'
 
 export {
     Home,
@@ -13,5 +12,6 @@ export {
     PodcastPage,
     Explore,
     Politicsseemore,
-    Economyseemore
+    Economyseemore,
+    Politicsseemore2
 };

@@ -1,12 +1,4 @@
 [
-  {
-      "subject": "Desenvolvimento",
-      "image": "https://i.ytimg.com/vi/DqTITcMq68k/mqdefault.jpg",
-      "name": "GIT e GITHUB",
-      "author": "ramonwanderley",
-      "link": "https://www.youtube.com/watch?v=DqTITcMq68k",
-      "created_at": "2023-05-04T01:23:45.678-03:00"
-  }
 	{
 		"subject": "Economy",
 		"name": "World Economic Crisis",
@@ -78,5 +70,13 @@
 		"author": "mattvie",
 		"createdAt": "2023-04-07T17:51:27.957Z",
 		"image": "https://img.youtube.com/vi/xK4whMcVh50/sddefault.jpg"
-	}
+	},
+    {
+        "subject": "Politics",
+        "name": "Brazilian Elections",
+        "link": "https://podshare.com/Politics/Brazilian-Elections",
+        "author": "HACardoso",
+        "createdAt": "2020-01-23T01:23:45.678-03:00",
+        "image": "https://bestswimming.swimchannel.net/wp-content/uploads/2022/08/brazil-elections-2022-vector-brazilian-portuguese-concept-brazilian-politics-2022-polls_695181-26.jpg"
+    }
 ]
