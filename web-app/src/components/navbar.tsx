@@ -15,9 +15,12 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
-  Image
+  Image,
+  Input
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Links = ['Explore','Seguindo', 'Histórico', 'Favoritos'];
 
@@ -35,8 +38,12 @@ const NavLink = ({ children }: { children: ReactNode }) => (
   </Link>
 );
 
+
 export default function Navbar() {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <>
@@ -46,7 +53,24 @@ export default function Navbar() {
             <Box justifySelf={'start'}>
                 <Image src={require('../styles/assets/LogoMarca.png')} height="24px" alt='Podshare' />
             </Box>
+            <Spacer />
+            <Flex as='form' alignItems={'flex-start'}>
+              <Input
+                type='text'
+                name='q'
+                placeholder='Search Users'
+                color='white'
+                bg='gray.800'
+                _placeholder={{ color: 'gray.400' }}
+                mr={2}
+              />
+              <Button colorScheme='teal' type='submit'>
+                Search
+              </Button>
+            </Flex>
             <Spacer/>
+            
+            
             <HStack
               as={'nav'}
               spacing={4}
@@ -56,6 +80,8 @@ export default function Navbar() {
               ))}
               
             </HStack>
+
+            
           <Flex alignItems={'center'}>
             <Button
               variant={'solid'}

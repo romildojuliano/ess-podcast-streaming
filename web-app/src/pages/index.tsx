@@ -4,6 +4,7 @@ import Podcast from './Podcast'
 import Explore from './Explore'
 import Politicsseemore from './Politicsseemore'
 import Economyseemore from './Economyseemore'
+import Search from './Search'
 
 export {
     Home,
@@ -11,5 +12,6 @@ export {
     Podcast,
     Explore,
     Politicsseemore,
-    Economyseemore
+    Economyseemore,
+    Search
 };
