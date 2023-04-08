@@ -1,7 +1,8 @@
+var fs = require('fs')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
-const port = 3000
+const port = 4000
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -9,12 +10,13 @@ const JSONDatabase = require('./JSONDatabase');
 
 const db = new JSONDatabase('./samples/users.json');
 
-require('./favorites')(app)
+require('./favorites')(app);
+require('./follow')(app);
+require('./podcasts')(app)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
 
 app.get('/search', (req, res) => {
   const query = req.query.q;

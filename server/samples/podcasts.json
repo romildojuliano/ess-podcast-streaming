@@ -1,1 +1,74 @@
-[]
+[
+	{
+		"subject": "Economy",
+		"name": "World Economic Crisis",
+		"link": "https://podshare.com/Economy/World-Economic-Crisis",
+		"author": "ramonwanderley",
+		"createdAt": "2020-01-23T01:23:45.678-03:00",
+		"image": "https://as1.ftcdn.net/v2/jpg/03/33/21/44/1000_F_333214491_CtFhfOiU4ybM3vqwtaiH4EJE8zgK7sKA.jpg"
+	},
+	{
+		"subject": "Politics",
+		"name": "Brexit",
+		"link": "https://podshare.com/Politics/Brexit",
+		"author": "romildojuliano",
+		"createdAt": "2020-01-23T01:23:45.678-03:00",
+		"image": "https://www.ft.com/__origami/service/image/v2/images/raw/http://prod-upp-image-read.ft.com/c29c7cec-dbc4-11e5-a72f-1e7744c66818?source=next&fit=scale-down&quality=highest&width=1440"
+	},
+	{
+		"subject": "Politics",
+		"name": "US Election",
+		"link": "http://podshare.com/Politics/US-Election",
+		"author": "mattvie",
+		"createdAt": "2020-01-23T01:23:45.678-03:00",
+		"image": "https://d2v9ipibika81v.cloudfront.net/uploads/sites/90/ElectionsWebHeaders_Summary-1140x684.jpg"
+	},
+	{
+		"subject": "Economy",
+		"name": "US Debt",
+		"link": "https://podshare.com/Economy/US-Debt",
+		"author": "lmm3",
+		"createdAt": "2020-01-23T01:23:45.678-03:00",
+		"image": "https://www.globaltimes.cn/Portals/0/attachment/2023/2023-01-30/27e29531-459a-44f6-bd9b-484086fcf4bd.jpeg"
+	},
+	{
+		"subject": "Politics",
+		"name": "Ukraine War",
+		"link": "https://podshare.com/Politics/Ukraine-War",
+		"author": "joaovictorbelo",
+		"createdAt": "2020-01-23T01:23:45.678-03:00",
+		"image": "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/952/cached.offlinehbpl.hbpl.co.uk/news/ORP/UkrainewarRS.jpg"
+	},
+	{
+		"subject": "Economy",
+		"name": "FED",
+		"link": "https://podshare.com/Economy/FED",
+		"author": "HACardoso",
+		"createdAt": "2020-01-23T01:23:45.678-03:00",
+		"image": "https://www.bankrate.com/2022/03/15104936/BR_History_of_the_Fed_funds_rate.jpg?auto=webp&optimize=high&crop=16:9&width=912"
+	},
+	{
+		"subject": "Economy",
+		"name": "Quantitative Easing",
+		"link": "https://podshare.com/Economy/Quantitative-Eaasing",
+		"author": "LuanCavalcanti07",
+		"createdAt": "2020-01-23T01:23:45.678-03:00",
+		"image": "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2021/02/quantitative-easing.jpg"
+	},
+	{
+		"subject": "Politics",
+		"name": "Politics 101",
+		"link": "https://www.youtube.com/watch?v=3Hp-yUDSF8g",
+		"author": "mattvie",
+		"createdAt": "2023-04-07T17:48:36.482Z",
+		"image": "https://img.youtube.com/vi/3Hp-yUDSF8g/sddefault.jpg"
+	},
+	{
+		"subject": "Economics",
+		"name": "Economics 101",
+		"link": "https://www.youtube.com/watch?v=xK4whMcVh50",
+		"author": "mattvie",
+		"createdAt": "2023-04-07T17:51:27.957Z",
+		"image": "https://img.youtube.com/vi/xK4whMcVh50/sddefault.jpg"
+	}
+]
