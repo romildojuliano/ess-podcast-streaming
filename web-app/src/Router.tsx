@@ -1,4 +1,4 @@
-import { UserTest, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2} from './pages';
+import { UserPage, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function Router() {
@@ -7,7 +7,7 @@ function Router() {
         <Routes>
           {/*adicionem aqui as rotas das paginas */}
           <Route path="/" element={<Home />} />
-          <Route path="/userTest" element={<UserTest />} />
+          <Route path="/user/:username" element={<UserPage />} />
           <Route path="/podcast" element={<PodcastPage />} />
           <Route path="/explore" element={<Explore/>} />
           <Route path="/Politicsseemore" element={<Politicsseemore />} />

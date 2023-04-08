@@ -1,4 +1,4 @@
-import UserTest from './UserTest'
+import UserPage from './UserPage'
 import Home from './Home'
 import PodcastPage from './Podcast'
 import Explore from './Explore'
@@ -8,7 +8,7 @@ import Politicsseemore2 from './Politicsseemore2'
 
 export {
     Home,
-    UserTest,
+    UserPage,
     PodcastPage,
     Explore,
     Politicsseemore,
