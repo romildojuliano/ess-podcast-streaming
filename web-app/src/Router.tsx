@@ -1,4 +1,4 @@
-import { UserPage, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2} from './pages';
+import { UserPage, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2, FollowingPage} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function Router() {
@@ -9,6 +9,7 @@ function Router() {
           <Route path="/" element={<Home />} />
           <Route path="/user/:username" element={<UserPage />} />
           <Route path="/podcast" element={<PodcastPage />} />
+          <Route path="/following" element={<FollowingPage />} />
           <Route path="/explore" element={<Explore/>} />
           <Route path="/Politicsseemore" element={<Politicsseemore />} />
           <Route path="/Economyseemore" element={<Economyseemore/>} />
