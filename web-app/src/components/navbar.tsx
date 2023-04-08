@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import React from 'react';
 import {
   Box,
   Flex,
@@ -12,15 +13,20 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
+  Icon,
   useDisclosure,
   useColorModeValue,
   Stack,
   Image
 } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
 
+import { Favorite, MusicHistory, People } from '../Icons';
 const Links = ['Explore','Seguindo', 'Histórico', 'Favoritos'];
-
+const IconLinks = [People, People, MusicHistory , Favorite];
+const NavBarPageButton = {
+  className: "navbar_page_link",
+  textAlign: "{'center'}"
+}
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
     px={2}
@@ -51,20 +57,17 @@ export default function Navbar() {
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {Links.map((link, index) => (
+              <NavLink {...NavBarPageButton}  key={link}>
+                {React.createElement(IconLinks[index])}
+                <br/>
+                {link}
+                </NavLink>
               ))}
               
             </HStack>
           <Flex alignItems={'center'}>
-            <Button
-              variant={'solid'}
-              colorScheme={'teal'}
-              size={'sm'}
-              mr={4}
-              leftIcon={<AddIcon />}>
-              Action
-            </Button>
+            
             <Menu>
               <MenuButton
                 as={Button}
@@ -90,11 +93,13 @@ export default function Navbar() {
 
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
-            <Stack as={'nav'} spacing={4}>
+            {/* <Stack as={'nav'} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                 <NavLink key={link[1]}>
+                 {link[0]}
+             </NavLink>
               ))}
-            </Stack>
+            </Stack> */}
           </Box>
         ) : null}
       </Box>
