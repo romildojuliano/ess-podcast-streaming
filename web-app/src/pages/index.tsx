@@ -1,17 +1,19 @@
-import UserTest from './UserTest'
+import UserPage from './UserPage'
 import Home from './Home'
-import Podcast from './Podcast'
+import PodcastPage from './Podcast'
 import Explore from './Explore'
 import Politicsseemore from './Politicsseemore'
 import Economyseemore from './Economyseemore'
+import Politicsseemore2 from './Politicsseemore2'
 import Search from './Search'
 
 export {
     Home,
-    UserTest,
-    Podcast,
+    UserPage,
+    PodcastPage,
     Explore,
     Politicsseemore,
     Economyseemore,
+    Politicsseemore2,
     Search
 };

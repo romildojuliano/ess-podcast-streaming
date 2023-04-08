@@ -1,4 +1,4 @@
-import { UserTest, Home, Podcast, Explore, Politicsseemore, Economyseemore, Search} from './pages';
+import { UserPage, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2, Search} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar';
 function Router() {
@@ -8,12 +8,13 @@ function Router() {
         <Routes>
           {/*adicionem aqui as rotas das paginas */}
           <Route path="/" element={<Home />} />
-          <Route path="/userTest" element={<UserTest />} />
-          <Route path="/podcast" element={<Podcast />} />
+          <Route path="/user/:username" element={<UserPage />} />
+          <Route path="/podcast" element={<PodcastPage />} />
           <Route path="/explore" element={<Explore/>} />
           <Route path="/search" element={<Search/>} />
           <Route path="/Politicsseemore" element={<Politicsseemore />} />
           <Route path="/Economyseemore" element={<Economyseemore/>} />
+          <Route path='/Politicsseemore2' element={<Politicsseemore2/>} />
         </Routes>
       </BrowserRouter>
   );

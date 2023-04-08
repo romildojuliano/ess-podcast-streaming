@@ -3,14 +3,14 @@ Feature: Podcast subject grouping
     I want to have acess to podcasts related to the topic of interest
 
     Scenario: Podcasts Listing
-        Given I am at the "Podcast" menu of the "Music Stream App"
+        Given I am at the "Explore" menu of the "Podshare"
         Then The podcasts are displayed by topic
         And A button "see all" is displayed at each topic
     
     Scenario: Acess Podcasts by subject
         Given I am at the "Podcasts" menu
-        When I select the "see all" button of the "Finances" type podcasts
-        Then I am redirectet to the "Finances" podcasts menu
+        When I select the "see all" button of the "Politics" type podcasts
+        Then I am redirectet to the "Politics" podcasts menu
     
     Scenario: Podcast Insertion in subject group
         Given I am a podcaster loged in the system

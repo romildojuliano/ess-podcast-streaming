@@ -4,17 +4,19 @@ const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser');
 const port = 4000
+const cors = require('cors');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
 const JSONDatabase = require('./JSONDatabase');
 
 const db = new JSONDatabase('./samples/users.json');
 
 require('./favorites')(app);
+require('./userData')(app);
 require('./follow')(app);
-require('./podcasts')(app)
+require('./podcasts')(app);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

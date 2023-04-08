@@ -38,14 +38,14 @@ module.exports = function (app) {
                 image_code = "default.png"
             }
 
-            var newPodcast = {
+            var newPodcast = [{
                 "subject": req.body.subject,
                 "name": req.body.name,
                 "link": req.body.link,
                 "author": req.body.author,
                 "createdAt": new Date().toISOString(),
                 "image": image_code
-            }
+            }]
 
             data.push(newPodcast)
             fs.writeFileSync('./samples/podcasts.json', JSON.stringify(data, false, "\t"))
@@ -65,6 +65,13 @@ module.exports = function (app) {
         var podcasts = JSON.parse(rawdata)
         var podeconomy = podcasts.filter(x => x.subject == "Economy")
         res.send(podeconomy)
+    })
+
+    app.get('/podcasts/politics2', (req, res) => {
+        let rawdata = fs.readFileSync('./samples/podcasts2.json', 'utf-8');
+        let podcasts = JSON.parse(rawdata)
+        let podpolitics = podcasts.filter(x => x.subject == "Politics")
+        res.send(podpolitics)
     })
 
 }

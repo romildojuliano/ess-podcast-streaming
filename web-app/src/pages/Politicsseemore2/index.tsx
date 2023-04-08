@@ -25,7 +25,7 @@ let cardsPolitics:Card[] = []
 
 
 async function getPolitics(){
-    const response = await fetch('http://127.0.0.1:4000/podcasts/politics');
+    const response = await fetch('http://127.0.0.1:4000/podcasts/politics2');
     const data = await response.json();
     
     for(let i in data){
@@ -40,7 +40,7 @@ getPolitics();
 
 
 
-export default function Politicsseemore(){
+export default function Politicsseemore2(){
     // As we have used custom buttons, we need a reference variable to
     // change the state
     const [slider, setSlider] = React.useState<Slider | null>(null);
