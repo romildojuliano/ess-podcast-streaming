@@ -7,10 +7,12 @@ import Politicsseemore from './Politicsseemore'
 import Economyseemore from './Economyseemore'
 import Politicsseemore2 from './Politicsseemore2'
 import Search from './Search'
+import RegisterPage from './RegisterPage'
 
 export {
     Home,
     UserPage,
+    RegisterPage,
     PodcastPage,
     Explore,
     Politicsseemore,
