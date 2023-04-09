@@ -15,7 +15,6 @@ import {
   MenuDivider,
   useDisclosure,
   useColorModeValue,
-  Stack,
   Image,
   Input
 } from '@chakra-ui/react';
@@ -30,7 +29,7 @@ const Links = [
   {nome: 'Explore', href: "#"},
   {nome: 'Seguindo', href: "http://localhost:3000/following"},
   {nome: 'Histórico', href: "#"},
-  {nome: 'Favoritos', href: "#"}
+  {nome: 'Favoritos', href: "/favorites"}
 ];
 const IconLinks = [People, People, MusicHistory , Favorite];
 const NavBarPageButton = {
