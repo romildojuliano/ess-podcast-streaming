@@ -126,8 +126,8 @@ export default function UserPage(){
           <Flex flexDir="column" color="white" marginLeft="25px" alignItems="flex-start" justifyContent="space-evenly">
             <Heading>{userData.username}</Heading>
             <Text fontSize="20px">{userData.followers.length} seguidores</Text>
-            {!doIFollow && <Button isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={startFollowing}>SEGUIR</Button>}
-            {doIFollow && <Button isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={onOpen}>SEGUINDO</Button>}
+            {!doIFollow && <Button className="followButton" isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={startFollowing}>SEGUIR</Button>}
+            {doIFollow && <Button className="followButton" isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={onOpen}>SEGUINDO</Button>}
           </Flex>
         </Flex>
       </Flex>
