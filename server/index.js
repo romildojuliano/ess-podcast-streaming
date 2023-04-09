@@ -24,7 +24,6 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
   console.log('Search Request Recieved')
   const query = req.query.q;
-  console.log(query)
   if (query) {
       const results = db.getAllMatchingNames(query);
       res.json(results);
