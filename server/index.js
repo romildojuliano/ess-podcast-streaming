@@ -16,6 +16,7 @@ require('./favorites')(app);
 require('./userData')(app);
 require('./follow')(app);
 require('./podcasts')(app);
+require('./search')(app, db);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

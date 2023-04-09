@@ -38,14 +38,14 @@ module.exports = function (app) {
                 image_code = "default.png"
             }
 
-            var newPodcast = [{
+            var newPodcast = {
                 "subject": req.body.subject,
                 "name": req.body.name,
                 "link": req.body.link,
                 "author": req.body.author,
                 "createdAt": new Date().toISOString(),
                 "image": image_code
-            }]
+            }
 
             data.push(newPodcast)
             fs.writeFileSync('./samples/podcasts.json', JSON.stringify(data, false, "\t"))
