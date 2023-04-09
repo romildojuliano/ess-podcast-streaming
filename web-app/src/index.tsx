@@ -2,6 +2,8 @@ import Router from './Router';
 import ReactDOM from 'react-dom';
 import { ChakraProvider,  extendTheme } from '@chakra-ui/react';
 import Navbar from "./components/navbar";
+import CaptionCarousel from './components/carousel';
+
 const theme = extendTheme({
     styles: {
       global: {
@@ -12,6 +14,5 @@ const theme = extendTheme({
       },
     },
   });
-  
 
-ReactDOM.render( <ChakraProvider theme={theme}><Navbar/><Router /></ChakraProvider>, document.getElementById('root'));
+ReactDOM.render( <ChakraProvider theme={theme}><Router /></ChakraProvider>, document.getElementById('root'));
