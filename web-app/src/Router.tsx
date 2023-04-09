@@ -1,15 +1,21 @@
-import { UserTest, Home, PodcastPage, FavoritesPage  } from './pages';
+import { UserPage, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2, Search, FollowingPage} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import Navbar from './components/navbar';
 function Router() {
   return (
       <BrowserRouter>
+        <Navbar/>
         <Routes>
           {/*adicionem aqui as rotas das paginas */}
           <Route path="/" element={<Home />} />
-          <Route path="/userTest" element={<UserTest />} />
-          <Route path="/podcast" element={<PodcastPage podcast={{name:'Git', link: "youtube.com.br", author: "mattive", subject: "Desenvolvimento", created_at: "2023-04-07T10:23:45.678-03:00", image: "https://i.ytimg.com/vi/DqTITcMq68k/mqdefault.jpg" }} />} />
-          <Route path="/favorites" element={< FavoritesPage user={{username: "ramonwanderley"}} />} />
+          <Route path="/user/:username" element={<UserPage />} />
+          <Route path="/podcast" element={<PodcastPage />} />
+          <Route path="/following" element={<FollowingPage />} />
+          <Route path="/explore" element={<Explore/>} />
+          <Route path="/search" element={<Search/>} />
+          <Route path="/Politicsseemore" element={<Politicsseemore />} />
+          <Route path="/Economyseemore" element={<Economyseemore/>} />
+          <Route path='/Politicsseemore2' element={<Politicsseemore2/>} />
         </Routes>
       </BrowserRouter>
   );

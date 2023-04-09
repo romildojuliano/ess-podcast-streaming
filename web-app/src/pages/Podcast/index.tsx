@@ -16,7 +16,7 @@ import { Star, StarOff } from '../../utils/StarIcons';
 import { Previous,Play,Next} from '../../Icons';
 
 interface PodcastPageProps {
-  podcast: {
+  podcast?: {
     name: string,
     link?: string,
     author?: string,
@@ -59,10 +59,10 @@ class PodcastPage extends React.Component<PodcastPageProps, PodcastPageState> {
     return (
     <Container padding={8} maxW='4xl'  centerContent>
       <Flex>
-        <Image  boxSize='320px'   borderRadius='16px' alt={this.props.podcast.name} src={this.props.podcast.image} fallbackSrc={require('../../styles/assets/placeholderPodcastImage.png')} />
+        <Image  boxSize='320px'   borderRadius='16px' alt={this.props.podcast?.name} src={this.props.podcast?.image} fallbackSrc={require('../../styles/assets/placeholderPodcastImage.png')} />
         <Box paddingLeft={2} w="560px">
           <Flex justifyContent={"space-between"}>
-            <Heading>{this.props.podcast.name}</Heading>
+            <Heading>{this.props.podcast?.name}</Heading>
             <IconButton
               colorScheme='transparent'
               fontSize={36}
@@ -77,7 +77,7 @@ class PodcastPage extends React.Component<PodcastPageProps, PodcastPageState> {
                   size={'xs'}
                   marginRight={2}
             />
-            {this.props.podcast.author}
+            {this.props.podcast?.author}
           </Text>
           <Text   mt={2} fontSize='sm' fontWeight=''>
             <Badge borderRadius='full' variant={'subtle'} ml='1' mr='2' fontSize='1.2em' colorScheme='blue'>
@@ -120,7 +120,7 @@ class PodcastPage extends React.Component<PodcastPageProps, PodcastPageState> {
   }
 
   PublishedAt(): string {
-    if(this.props.podcast.created_at == null)
+    if(this.props.podcast?.created_at == null)
       return "agora";
     var created_at : Date = new Date(this.props.podcast.created_at);
     console.log( new Date().getTime(), created_at);
