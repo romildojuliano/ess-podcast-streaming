@@ -45,11 +45,11 @@ defineSupportCode( function({Given, When, Then}){
         await button.click();
     });
    
-    Then(/^Eu deve continuar na pagina de "([^\"]*))"$/, async(user) => {
+    Then(/^Eu deve continuar na pagina de "([^\"]*)"$/, async(user) => {
         await expect(browser.getCurrentUrl()).to.eventually.equal(`http://localhost:3000/user/${user}`)
     });
 
-    Then(/^Eu devo ver a informação de que eu estou "([^\"]*))" o usuario"$/, async(text) => {
+    Then(/^Eu devo ver a informação de que eu estou "([^\"]*)" o usuario"$/, async(text) => {
         let button = element(by.xpath(`.//*[.="${text}" and class="followButton"]`));
         await expect(button).isPresent().toBe(true);
     });
