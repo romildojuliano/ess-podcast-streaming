@@ -1,21 +1,25 @@
-import UserPage from './UserPage'
-import FollowingPage from './followingPage'
-import Home from './Home'
-import PodcastPage from './Podcast'
-import Explore from './Explore'
-import Politicsseemore from './Politicsseemore'
-import Economyseemore from './Economyseemore'
-import Politicsseemore2 from './Politicsseemore2'
-import Search from './Search'
+import UserPage from "./UserPage";
+import ChannelPage from "./ChannelPage";
+import FollowingPage from "./followingPage";
+import Home from "./Home";
+import PodcastPage from "./Podcast";
+import Explore from "./Explore";
+import Politicsseemore from "./Politicsseemore";
+import Economyseemore from "./Economyseemore";
+import Politicsseemore2 from "./Politicsseemore2";
+import Search from "./Search";
+import RegisterPage from "./RegisterPage";
 
 export {
-    Home,
-    UserPage,
-    PodcastPage,
-    Explore,
-    Politicsseemore,
-    Economyseemore,
-    Politicsseemore2,
-    Search,
-    FollowingPage
+  Home,
+  UserPage,
+  ChannelPage,
+  RegisterPage,
+  PodcastPage,
+  Explore,
+  Politicsseemore,
+  Economyseemore,
+  Politicsseemore2,
+  Search,
+  FollowingPage,
 };
