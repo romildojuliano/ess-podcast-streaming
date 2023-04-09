@@ -4,7 +4,6 @@ module.exports = function(app){
   app.get('/favorites/:username', (req, res) => {
     var data = JSON.parse(fs.readFileSync('./samples/favorites.json', 'utf8')); 
     var podcastsData = JSON.parse(fs.readFileSync('./samples/podcasts.json', 'utf8')); 
-
     var result = data[req.params.username] != null ? data[req.params.username].filter(favorite => favorite.username == req.params.username) : [];
     result = result.map(favorite => {
       var podcast = podcastsData.find(podcast => podcast.name == favorite.podcast);
@@ -23,9 +22,8 @@ module.exports = function(app){
     res.send(result);
   })
 
-  app.post('/favorite/:username', (req, res) => {
-    if(req.body.podcast == null || req.body.podcast.length < 3) {
-      console.log(req.body)
+  app.post('/favorite/:username', (req, res) => {    
+    if(req.body == null || req.body.podcast == null || req.body.podcast.length < 3) {
       res.status(400).send({error:'Invalid Podcast'}).end();
       return;
     }
