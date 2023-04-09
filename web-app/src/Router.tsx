@@ -1,4 +1,4 @@
-import { UserPage, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2, Search, FollowingPage} from './pages';
+import { UserPage, Home, PodcastPage, Explore, Politicsseemore, Economyseemore, Politicsseemore2, Search, FollowingPage, RegisterPage} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar';
 function Router() {
@@ -7,6 +7,7 @@ function Router() {
         <Navbar/>
         <Routes>
           {/*adicionem aqui as rotas das paginas */}
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<Home />} />
           <Route path="/user/:username" element={<UserPage />} />
           <Route path="/podcast" element={<PodcastPage />} />
