@@ -1,12 +1,12 @@
 [
-  	{
-      "subject": "Desenvolvimento",
-      "image": "https://i.ytimg.com/vi/DqTITcMq68k/mqdefault.jpg",
-      "name": "GIT e GITHUB",
-      "author": "ramonwanderley",
-      "link": "https://www.youtube.com/watch?v=DqTITcMq68k",
-      "created_at": "2023-05-04T01:23:45.678-03:00"
-  	},
+	{
+		"subject": "Desenvolvimento",
+		"image": "https://i.ytimg.com/vi/DqTITcMq68k/mqdefault.jpg",
+		"name": "GIT e GITHUB",
+		"author": "ramonwanderley",
+		"link": "https://www.youtube.com/watch?v=DqTITcMq68k",
+		"created_at": "2023-05-04T01:23:45.678-03:00"
+	},
 	{
 		"subject": "Economy",
 		"name": "World Economic Crisis",
@@ -78,5 +78,13 @@
 		"author": "mattvie",
 		"createdAt": "2023-04-07T17:51:27.957Z",
 		"image": "https://img.youtube.com/vi/xK4whMcVh50/sddefault.jpg"
+	},
+	{
+		"subject": "Politics",
+		"name": "Dee Snider's Hearing",
+		"link": "https://www.youtube.com/watch?v=S0Vyr1TylTE",
+		"author": "mattvie",
+		"createdAt": "2023-04-09T18:20:53.047Z",
+		"image": "https://img.youtube.com/vi/S0Vyr1TylTE/sddefault.jpg"
 	}
 ]
