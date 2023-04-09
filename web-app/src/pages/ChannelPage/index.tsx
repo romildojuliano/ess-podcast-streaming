@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Box,
   Flex,
@@ -7,6 +7,7 @@ import {
   Text,
   Button,
   Link,
+  useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -14,7 +15,10 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import pfp from "../../styles/assets/nopfp.png";
@@ -53,6 +57,9 @@ export default function ChannelPage() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const initialRef = useRef(null);
+  const finalRef = useRef(null);
+
   //variavel para saber se o usuario logado ja segue o usuario da página
   const [doIFollow, setDoIFollow] = useState(false);
 
@@ -71,11 +78,6 @@ export default function ChannelPage() {
 
     if (!loading) getUserData();
   }, [username, loading]);
-
-  //checa se o usuario segue
-  useEffect(() => {
-    setDoIFollow(userData.followers.includes(loggedUser));
-  }, [loggedUser, userData.followers]);
 
   return (
     <Box bgColor="#1E1E1E" h="90vh">
@@ -97,29 +99,58 @@ export default function ChannelPage() {
           >
             <Heading>{userData.username}</Heading>
             <Text fontSize="20px">{userData.followers.length} seguidores</Text>
-            {!doIFollow && (
-              <Button
-                isLoading={loading}
-                color="#1E1E1E"
-                bgColor="#ABEFED"
-                borderRadius="25px"
-                w="132px"
-              >
-                UPLOAD
-              </Button>
-            )}
-            {doIFollow && (
-              <Button
-                isLoading={loading}
-                color="#1E1E1E"
-                bgColor="#ABEFED"
-                borderRadius="25px"
-                w="132px"
-                onClick={onOpen}
-              >
-                SEGUINDO
-              </Button>
-            )}
+
+            <Button
+              onClick={onOpen}
+              color="#1E1E1E"
+              bgColor="#ABEFED"
+              borderRadius="25px"
+              w="132px"
+            >
+              UPLOAD
+            </Button>
+
+            <Modal
+              initialFocusRef={initialRef}
+              finalFocusRef={finalRef}
+              isOpen={isOpen}
+              onClose={onClose}
+            >
+              <ModalOverlay />
+              <ModalContent bgColor="#252525">
+                <ModalHeader color={"white"}>Novo Podcast</ModalHeader>
+                <ModalCloseButton />
+
+                <ModalBody pb={6}>
+                  <FormControl>
+                    <FormLabel>Nome</FormLabel>
+                    <Input ref={initialRef} placeholder="Nome do Podcast" />
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel>Categoria</FormLabel>
+                    <Select placeholder="Selecione Categoria">
+                      <option>Politics</option>
+                      <option>Economy</option>
+                    </Select>
+                  </FormControl>
+
+                  <FormControl mt={4}>
+                    <FormLabel>Link</FormLabel>
+                    <Input placeholder="Link do Podcast" />
+                  </FormControl>
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button colorScheme="blue" mr={3}>
+                    Upload
+                  </Button>
+                  <Button colorScheme="blue" onClick={onClose}>
+                    Fechar
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </Flex>
         </Flex>
       </Flex>
