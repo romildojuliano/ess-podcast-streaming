@@ -1,26 +1,9 @@
-// import React from 'react';
-// import { useState, useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
-
-
-
-
-// async function waitForData(){
-//   await getData();
-// }
-
-// async function getData() {
-//   const response =  await fetch(`http://localhost:4000/search?q=${query}`);
-//   const data =  await response.json()
-//   users = data;
-//   return data;
-// }
-
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import SearchList from './searchList';
+import Scroll from './scroll';
 
 let query;
-let users;
 
 function Search(){
   const location = useLocation();
@@ -28,7 +11,7 @@ function Search(){
 
   useEffect(() => {
     async function waitForData(){
-      const query = new URLSearchParams(location.search).get('q');
+      query = new URLSearchParams(location.search).get('q');
       const response =  await fetch(`http://localhost:4000/search?q=${query}`);
       const data =  await response.json()
       setUsers(data);
@@ -39,32 +22,20 @@ function Search(){
   let jsonUsers = JSON.stringify(users)
   console.log(jsonUsers)
 
+  function searchList() {
+    return (
+      <Scroll>
+        <SearchList filteredPersons={users} />
+      </Scroll>
+    );
+  }
+
   return (
-    <div>
+    <div> 
     <h2>Search Results for: {query}</h2>
-    <p>{jsonUsers}</p>  
+    {searchList()}
     </div>
   );
 }
-
-// export default Search;
-
-
-// function Search(){
-//   const location = useLocation();
-//   query = new URLSearchParams(location.search).get('q');
-
-//   waitForData(); 
-//   let jsonUsers = JSON.stringify(users)
-//   console.log(jsonUsers)
-
-//   return (
-//     <div>
-//     <h2>Search Results for: {query}</h2>
-//     <p>{jsonUsers}</p>  
-//     </div>
-//   );
-// }
-
 
 export default Search;

@@ -1,5 +1,4 @@
-Feature: Seguir Usuário
-
+Feature: Pesquisar Usuário
     Como um usuário da plataforma de Podcast
     Eu quero pesquisar outros usuários.
 
