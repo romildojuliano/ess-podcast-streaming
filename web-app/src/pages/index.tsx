@@ -1,4 +1,5 @@
 import UserPage from './UserPage'
+import ChannelPage from "./ChannelPage"
 import FollowingPage from './followingPage'
 import Home from './Home'
 import PodcastPage from './Podcast'
@@ -7,11 +8,13 @@ import Politicsseemore from './Politicsseemore'
 import Economyseemore from './Economyseemore'
 import Politicsseemore2 from './Politicsseemore2'
 import Search from './Search'
-import RegisterPage from './RegisterPage'
+import FavoritesPage from './Favorites'
+import RegisterPage from "./RegisterPage"
 
 export {
     Home,
     UserPage,
+    ChannelPage,
     RegisterPage,
     PodcastPage,
     Explore,
@@ -19,5 +22,6 @@ export {
     Economyseemore,
     Politicsseemore2,
     Search,
-    FollowingPage
+    FollowingPage,
+    FavoritesPage
 };
