@@ -2,6 +2,17 @@ import { UserPage, Home, FavoritesPage, PodcastPage, ChannelPage, RegisterPage, 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar';
 function Router() {
+  const user = localStorage.getItem('user');
+  if (!user) {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </BrowserRouter>
+    )
+  }
+
   return (
       <BrowserRouter>
         <Navbar/>
