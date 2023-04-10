@@ -2,20 +2,20 @@ import { defineSupportCode } from "cucumber";
 import { browser, $, element, ElementArrayFinder, by } from 'protractor'; 
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
-
-const unfollow = async (user): Promise<string[]> => {
-    const myUser = browser.executeScript('window.localStorage.setItem("user")');
-    const { data } = await (
-        await fetch(`http://localhost:4000/users/${myUser}/following?user_to_unfollow=${user}`, {
-          method: 'DELETE'
-        })
-      ).json()
-    return data;
-}
+import request = require("request-promise");
 
 const listFollow = async (user): Promise<string[]> => {
-    const { data } = await (await fetch(`http://localhost:4000/getUser/${user}`)).json()
+    const { data } = JSON.parse(await request(`http://localhost:4000/getUser/${user}`))
     return data.userData.following;
+}
+
+const login = async (user): Promise<string> => {
+    browser.executeScript(`window.localStorage.setItem('user', '${user}')`);
+    let logged = '';
+    while (!(logged)){
+        logged = await browser.executeScript('return window.localStorage.getItem("user")');
+    }
+    return logged;
 }
 
 defineSupportCode( function({Given, When, Then}){
@@ -26,22 +26,20 @@ defineSupportCode( function({Given, When, Then}){
     });
 
     Given(/^Eu estou logado com o usuario "([^\"]*)"$/, async(user) =>{
-        browser.executeScript(`window.localStorage.setItem('user', '${user}')`)
-        await expect(browser.executeScript('window.localStorage.setItem("user")')).to.eventually.equal(user);
+        await expect(login(user)).to.eventually.equal(user);
     });
 
     Given(/^Eu nao sigo o usuario "([^\"]*)"$/, async(user) =>{
-        const following = await unfollow(user)
-        await expect(following).to.not.include(user)
+        await expect(listFollow(user)).to.not.include([user])
     });
 
     Then(/^Eu devo ver a opção "([^\"]*)" para seguir o usuario$/, async(text) => {
-        let button = element(by.xpath(`.//*[.="${text}" and class="followButton"]`));
-        await expect(button).isPresent().toBe(true);
+        let button = element(by.id('followButton'));
+        await expect(button.getText()).to.eventually.equal(text);
     });
     
     When(/^Eu escolho "([^\"]*)"$/, async(text) =>{
-        let button = element(by.xpath(`.//*[.="${text}" and class="followButton"]`));
+        let button = element(by.id('followButton'));
         await button.click();
     });
    
@@ -50,8 +48,8 @@ defineSupportCode( function({Given, When, Then}){
     });
 
     Then(/^Eu devo ver a informação de que eu estou "([^\"]*)" o usuario"$/, async(text) => {
-        let button = element(by.xpath(`.//*[.="${text}" and class="followButton"]`));
-        await expect(button).isPresent().toBe(true);
+        let button = element(by.id('followButton'));
+        await expect(button.getText()).to.eventully.equal(text);
     });
 }) 
 

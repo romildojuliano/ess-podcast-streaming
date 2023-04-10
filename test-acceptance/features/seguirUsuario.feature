@@ -6,10 +6,10 @@ Scenario: seguindo usuario com notificações ativas
     Given Eu estou na página do usuario "lmm3"
     And Eu estou logado com o usuario "joaovictorbelo"
     And Eu nao sigo o usuario "lmm3"
-    Then Eu devo ver a opção "seguir" para seguir o usuario
-    When Eu escolho "seguir"
+    Then Eu devo ver a opção "SEGUIR" para seguir o usuario
+    When Eu escolho "SEGUIR"
     Then Eu deve continuar na pagina de "lmm3" 
-    And Eu devo ver a informação de que eu estou "seguindo" o usuario
+    And Eu devo ver a informação de que eu estou "SEGUINDO" o usuario
 
 Scenario: clicando sem querer no botão de deixar de seguir
     Given Eu estou logado com o usuario "joaovictorbelo"
@@ -33,6 +33,11 @@ Scenario: deixando de seguir usuario
     Then Eu deve continuar na pagina de "lmm3" 
     And Eu devo ver a opção de seguir usuario
 
+Scenario: tentando seguir a propria conta
+    Given Eu estou logado com o usuario "joaovictorbelo"
+    And Eu estou na página do mesmo usuario "joaovictorbelo"
+    Then Eu não devo ver a opção "seguir"
+
 Scenario: tentando seguir usuario sem estar logado
     Given Eu não estou logado na plataforma
     And Eu estou na página do usuario "lmm3"
@@ -40,11 +45,6 @@ Scenario: tentando seguir usuario sem estar logado
     When Eu escolho "seguir"
     Then Eu sou avisado de que devo estar logado para seguir um usuario
     And Eu sou redirecionado para a pagina de login
-
-Scenario: tentando seguir a propria conta
-    Given Eu estou logado com o usuario "joaovictorbelo"
-    And Eu estou na página do usuario "joaovictorbelo"
-    Then Eu não devo ver a opção "seguir"
 
 Scenario: listando meus artistas seguidos
     Given Eu estou logado com o usuario "joaovictorbelo"
