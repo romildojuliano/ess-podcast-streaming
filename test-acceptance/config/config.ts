@@ -9,7 +9,6 @@ export let config: Config = {
     capabilities: {
         browserName: 'chrome',
         version: '122.0.5615.49',
-        chromeOptions: {binary: "/usr/bin/google-chrome"}
     },
 
     framework: 'custom',
