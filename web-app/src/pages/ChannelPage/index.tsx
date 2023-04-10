@@ -79,6 +79,55 @@ export default function ChannelPage() {
     if (!loading) getUserData();
   }, [username, loading]);
 
+  const [name, setName] = useState("Nome do Podcast");
+  const [subject, setSubject] = useState("");
+  const [link, setLink] = useState("Link do Podcast");
+  const [author, setAuthor] = useState(username);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = { subject, name, link, author };
+
+    //console.log(data);
+
+    // const response = await fetch("http://localhost:4000/podcasts/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(data),
+    // });
+
+    // const jsonData = await response.json();
+
+    // fetch("http://localhost:4000/podcasts/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json()) // converter para json
+    //   .then((json) => console.log(json)) //imprimir dados no console
+    //   .catch((err) => console.log(err)); // lidar com os erros por catch
+
+    fetch("http://localhost:4000/podcasts/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then(function (response) {
+        //console.log("ok");
+        alert("ok");
+      })
+      .catch(function (error) {
+        //console.log(error);
+        alert("erro");
+      });
+  };
+
   return (
     <Box bgColor="#1E1E1E" h="90vh">
       <Flex
@@ -122,33 +171,51 @@ export default function ChannelPage() {
                 <ModalCloseButton />
 
                 <ModalBody pb={6}>
-                  <FormControl>
-                    <FormLabel>Nome</FormLabel>
-                    <Input ref={initialRef} placeholder="Nome do Podcast" />
-                  </FormControl>
+                  <form onSubmit={handleSubmit}>
+                    <FormControl>
+                      <FormLabel>Nome</FormLabel>
+                      <Input
+                        ref={initialRef}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </FormControl>
 
-                  <FormControl>
-                    <FormLabel>Categoria</FormLabel>
-                    <Select placeholder="Selecione Categoria">
-                      <option>Politics</option>
-                      <option>Economy</option>
-                    </Select>
-                  </FormControl>
+                    <FormControl>
+                      <FormLabel>Categoria</FormLabel>
+                      <Select
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                        placeholder="Escolha uma Categoria"
+                      >
+                        <option value="politics">Politics</option>
+                        <option value="economy">Economy</option>
+                      </Select>
+                    </FormControl>
 
-                  <FormControl mt={4}>
-                    <FormLabel>Link</FormLabel>
-                    <Input placeholder="Link do Podcast" />
-                  </FormControl>
+                    <FormControl mt={4}>
+                      <FormLabel>Link</FormLabel>
+                      <Input
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
+                      />
+                    </FormControl>
+
+                    <ModalFooter>
+                      <Button
+                        colorScheme="blue"
+                        mr={3}
+                        type="submit"
+                        onClick={onClose}
+                      >
+                        Upload
+                      </Button>
+                      <Button colorScheme="blue" onClick={onClose}>
+                        Fechar
+                      </Button>
+                    </ModalFooter>
+                  </form>
                 </ModalBody>
-
-                <ModalFooter>
-                  <Button colorScheme="blue" mr={3}>
-                    Upload
-                  </Button>
-                  <Button colorScheme="blue" onClick={onClose}>
-                    Fechar
-                  </Button>
-                </ModalFooter>
               </ModalContent>
             </Modal>
           </Flex>
