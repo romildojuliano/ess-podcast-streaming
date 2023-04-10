@@ -18,3 +18,8 @@ Feature: Podcast subject grouping
         Given I am a podcaster loged in the system
         When I upload the podcast "Brazilian Elections" whit the tag of subject "Politics"
         Then The podcast "Brazilian Elections" is propperly inserted at the list of podcasts with subject "Politics"
+
+    Scenario: Podcast Deletion from subject group
+        Given I am a podcaster loged in the system
+        When I delete the podcast "Brazilian Elections" with the tag of subject "Politics"
+        Then The podcast "Brazilian Elections" is propperly deleted from the list of podcasts with subject "Politics"

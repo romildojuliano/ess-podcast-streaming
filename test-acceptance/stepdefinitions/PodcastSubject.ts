@@ -1,4 +1,3 @@
-import { BeforeAll } from "@cucumber/cucumber";
 import { defineSupportCode } from "cucumber";
 import { browser, $, element, ElementArrayFinder, by } from 'protractor'; 
 let chai = require('chai').use(require('chai-as-promised'));
@@ -81,6 +80,32 @@ defineSupportCode( function({Given, When, Then}){
         var allPodcasts : ElementArrayFinder = element.all(by.className('chakra-heading css-1dklj6k'));
 
         await allPodcasts.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(2));
+
+    });
+
+    Given(/^Given I am a podcaster loged in the system$/, async() => {
+
+
+        await browser.get("http://localhost:3000/Politicsseemore2");
+        await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/Politicsseemore2");
+
+
+    });
+
+    When(/^When I delete the podcast "Brazilian Elections" with the tag of subject "Politics"$/, async() => {
+
+
+        await browser.get("http://localhost:3000/Politicsseemore");
+        await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/Politicsseemore");
+
+    });
+
+    Then(/^Then The podcast "Brazilian Elections" is propperly deleted from the list of podcasts with subject "Politics"$/, async() =>{
+
+        var allPodcasts : ElementArrayFinder = element.all(by.className('chakra-heading css-1dklj6k'));
+
+        await allPodcasts.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(2));
+
 
     })
    
