@@ -79,6 +79,18 @@ export default function ChannelPage() {
     if (!loading) getUserData();
   }, [username, loading]);
 
+  const [name, setName] = useState("Nome do Podcast");
+  const [subject, setSubject] = useState("Escolha uma categoria");
+  const [link, setLink] = useState("Link do Podcast");
+  const [author, setAuthor] = useState("mattvie");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = { subject, name, link, author };
+
+    alert(data);
+  };
+
   return (
     <Box bgColor="#1E1E1E" h="90vh">
       <Flex
@@ -122,27 +134,39 @@ export default function ChannelPage() {
                 <ModalCloseButton />
 
                 <ModalBody pb={6}>
-                  <FormControl>
-                    <FormLabel>Nome</FormLabel>
-                    <Input ref={initialRef} placeholder="Nome do Podcast" />
-                  </FormControl>
+                  <form onSubmit={handleSubmit}>
+                    <FormControl>
+                      <FormLabel>Nome</FormLabel>
+                      <Input
+                        ref={initialRef}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </FormControl>
 
-                  <FormControl>
-                    <FormLabel>Categoria</FormLabel>
-                    <Select placeholder="Selecione Categoria">
-                      <option>Politics</option>
-                      <option>Economy</option>
-                    </Select>
-                  </FormControl>
+                    <FormControl>
+                      <FormLabel>Categoria</FormLabel>
+                      <Select
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                      >
+                        <option value="politics">Politics</option>
+                        <option value="economy">Economy</option>
+                      </Select>
+                    </FormControl>
 
-                  <FormControl mt={4}>
-                    <FormLabel>Link</FormLabel>
-                    <Input placeholder="Link do Podcast" />
-                  </FormControl>
+                    <FormControl mt={4}>
+                      <FormLabel>Link</FormLabel>
+                      <Input
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
+                      />
+                    </FormControl>
+                  </form>
                 </ModalBody>
 
                 <ModalFooter>
-                  <Button colorScheme="blue" mr={3}>
+                  <Button colorScheme="blue" mr={3} type="submit">
                     Upload
                   </Button>
                   <Button colorScheme="blue" onClick={onClose}>
