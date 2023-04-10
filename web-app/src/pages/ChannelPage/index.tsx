@@ -82,13 +82,20 @@ export default function ChannelPage() {
   const [name, setName] = useState("Nome do Podcast");
   const [subject, setSubject] = useState("");
   const [link, setLink] = useState("Link do Podcast");
-  const [author, setAuthor] = useState("mattvie");
+  const [author, setAuthor] = useState(username);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { subject, name, link, author };
 
-    console.log(data);
+    //console.log(data);
+    fetch("http://localhost:4000/podcasts/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).then(() => {
+      console.log(username + " submitted podcast " + name);
+    });
   };
 
   return (
