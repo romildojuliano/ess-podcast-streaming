@@ -84,18 +84,48 @@ export default function ChannelPage() {
   const [link, setLink] = useState("Link do Podcast");
   const [author, setAuthor] = useState(username);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { subject, name, link, author };
 
     //console.log(data);
+
+    // const response = await fetch("http://localhost:4000/podcasts/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(data),
+    // });
+
+    // const jsonData = await response.json();
+
+    // fetch("http://localhost:4000/podcasts/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json()) // converter para json
+    //   .then((json) => console.log(json)) //imprimir dados no console
+    //   .catch((err) => console.log(err)); // lidar com os erros por catch
+
     fetch("http://localhost:4000/podcasts/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    }).then(() => {
-      console.log(username + " submitted podcast " + name);
-    });
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then(function (response) {
+        //console.log("ok");
+        alert("ok");
+      })
+      .catch(function (error) {
+        //console.log(error);
+        alert("erro");
+      });
   };
 
   return (
