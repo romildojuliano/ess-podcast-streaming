@@ -80,7 +80,7 @@ export default function ChannelPage() {
   }, [username, loading]);
 
   const [name, setName] = useState("Nome do Podcast");
-  const [subject, setSubject] = useState("Escolha uma categoria");
+  const [subject, setSubject] = useState("");
   const [link, setLink] = useState("Link do Podcast");
   const [author, setAuthor] = useState("mattvie");
 
@@ -88,7 +88,7 @@ export default function ChannelPage() {
     e.preventDefault();
     const data = { subject, name, link, author };
 
-    alert(data);
+    console.log(data);
   };
 
   return (
@@ -149,6 +149,7 @@ export default function ChannelPage() {
                       <Select
                         value={subject}
                         onChange={(e) => setSubject(e.target.value)}
+                        placeholder="Escolha uma Categoria"
                       >
                         <option value="politics">Politics</option>
                         <option value="economy">Economy</option>
@@ -162,17 +163,17 @@ export default function ChannelPage() {
                         onChange={(e) => setLink(e.target.value)}
                       />
                     </FormControl>
+
+                    <ModalFooter>
+                      <Button colorScheme="blue" mr={3} type="submit">
+                        Upload
+                      </Button>
+                      <Button colorScheme="blue" onClick={onClose}>
+                        Fechar
+                      </Button>
+                    </ModalFooter>
                   </form>
                 </ModalBody>
-
-                <ModalFooter>
-                  <Button colorScheme="blue" mr={3} type="submit">
-                    Upload
-                  </Button>
-                  <Button colorScheme="blue" onClick={onClose}>
-                    Fechar
-                  </Button>
-                </ModalFooter>
               </ModalContent>
             </Modal>
           </Flex>
