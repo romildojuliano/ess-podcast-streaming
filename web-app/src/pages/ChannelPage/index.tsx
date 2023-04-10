@@ -202,7 +202,12 @@ export default function ChannelPage() {
                     </FormControl>
 
                     <ModalFooter>
-                      <Button colorScheme="blue" mr={3} type="submit">
+                      <Button
+                        colorScheme="blue"
+                        mr={3}
+                        type="submit"
+                        onClick={onClose}
+                      >
                         Upload
                       </Button>
                       <Button colorScheme="blue" onClick={onClose}>
