@@ -17,25 +17,22 @@ module.exports = function (app) {
         } else {
 
             // extracting the thumbnail if it is a youtube link
-            var link = req.body.link;
+
             //var link = "https://www.youtube.com/watch?v=3Hp-yUDSF8g";
-            var link_url, image_code;
-            if (link.length == 43) {
-                link_url = link.slice(0, 23)
-                image_code = link.slice(32)
+            var url_piece, image_piece;
+            if (req.body.link.length == 43) {
+                url_piece = req.body.link.slice(0, 23)
+                image_piece = req.body.link.slice(32)
 
-                if (link_url == "https://www.youtube.com") {
-                    //console.log(link_url)
-
-                    image_code = "https://img.youtube.com/vi/" + image_code + "/sddefault.jpg";
-
-                    //console.log(image_code)
+                if (url_piece == "https://www.youtube.com") {
+                    image_piece = "https://img.youtube.com/vi/" + image_piece + "/sddefault.jpg";
                 } else {
-                    image_code = "default.png"
+                    // coincidentally the link has 43 characters, but it is NOT a YouTube link
+                    image_piece = "default.png"
                 }
-
             } else {
-                image_code = "default.png"
+                // worst case scenario, length!=43 (not YouTube link)
+                image_piece = "default.png"
             }
 
             var newPodcast = {
@@ -44,7 +41,7 @@ module.exports = function (app) {
                 "link": req.body.link,
                 "author": req.body.author,
                 "created_at": new Date().toISOString(),
-                "image": image_code
+                "image": image_piece
             }
 
             data.push(newPodcast)
