@@ -30,6 +30,11 @@ describe('POST /podcasts/', function () {
             .set('Accept', 'application/json')
             .expect(200)
             .end((err, res) => {
+                if (err) return done(err);
+                assert.strictEqual(res.body.subject, "Economy");
+                assert.strictEqual(res.body.name, "John Wick goes shopping");
+                assert.strictEqual(res.body.link, "https://www.youtube.com/watch?v=km7DDDE-i0c");
+                assert.strictEqual(res.body.author, "mattvie");
                 done();
             });
 
