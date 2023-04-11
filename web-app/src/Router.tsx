@@ -17,7 +17,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 
-
 function Router() {
   const user = localStorage.getItem("user");
   console.log(user)
@@ -38,6 +37,7 @@ function Router() {
       <Navbar />
       <Routes>
         {/*adicionem aqui as rotas das paginas */}
+        <Route path="/" element={<Navigate to="/" />} /> 
         <Route path="/" element={<Home />} />
         <Route path="/user/:username" element={<UserPage />} />
         <Route path="/podcast/:podcast" element={<PodcastPage />} />
@@ -49,7 +49,6 @@ function Router() {
         <Route path="/Economyseemore" element={<Economyseemore />} />
         <Route path="/Politicsseemore2" element={<Politicsseemore2 />} />
         <Route path="/favorites" element={<FavoritesPage />} />
-        {/* <Route path="/register" element={<RegisterPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
