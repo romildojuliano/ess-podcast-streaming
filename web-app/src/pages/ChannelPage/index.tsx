@@ -202,7 +202,7 @@ export default function ChannelPage() {
                       <Input
                         value={link}
                         onChange={(e) => setLink(e.target.value)}
-                        ng-model="forms.link"
+                        className="forms-link"
                       />
                     </FormControl>
 

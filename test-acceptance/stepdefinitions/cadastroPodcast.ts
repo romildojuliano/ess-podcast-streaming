@@ -22,7 +22,7 @@ defineSupportCode(function ({ Given, When, Then, }) {
     });
 
     When(/^I write the name of the file "Podcast 99"$/, async () => {
-        var input = element(by.model('forms.name'));
+        var input = element(by.className('forms-name'));
         input.sendKeys('Podshare New Podcast');
         await expect(input.getAttribute('value')).toBe('Podshare New Podcast');
     });
@@ -32,7 +32,7 @@ defineSupportCode(function ({ Given, When, Then, }) {
     });
 
     When(/^I write the link to "Podcast 99"$/, async () => {
-        var input = element(by.model('forms.link'));
+        var input = element(by.className('forms-link'));
         input.sendKeys('podshare.link/new-podcast');
         await expect(input.getAttribute('value')).toBe('podshare.link/new-podcast');
     });
@@ -58,7 +58,7 @@ defineSupportCode(function ({ Given, When, Then, }) {
     });
 
     //2o cenario
-    Given(/^I am at the "Channel management" page$/, async () => {
+    Given(/^I am at the "Channel management" page again$/, async () => {
         await browser.get("http://localhost:3000/channel/mattvie");
         await expect(browser.getTitle()).to.eventually.equal('Podshare');
     });
@@ -68,7 +68,7 @@ defineSupportCode(function ({ Given, When, Then, }) {
     });
 
     When(/^I write the name of the file "Podcast 99"$/, async () => {
-        var input = element(by.model('forms.name'));
+        var input = element(by.className('forms-name'));
         input.sendKeys('Podshare New Podcast');
         await expect(input.getAttribute('value')).toBe('Podshare New Podcast');
     });
@@ -78,7 +78,7 @@ defineSupportCode(function ({ Given, When, Then, }) {
     });
 
     When(/^I write the link to "Podcast 99"$/, async () => {
-        var input = element(by.model('forms.link'));
+        var input = element(by.className('forms-link'));
         input.sendKeys('podshare.link/new-podcast');
         await expect(input.getAttribute('value')).toBe('podshare.link/new-podcast');
     });
