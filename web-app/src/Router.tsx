@@ -17,7 +17,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 
 function Router() {
-  //const user = localStorage.getItem("user");
+  // const user = localStorage.getItem("user");
   // console.log(user)
   // if (!user) {
   //   return (

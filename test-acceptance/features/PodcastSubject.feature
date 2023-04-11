@@ -3,8 +3,7 @@ Feature: Podcast subject grouping
     I want to have acess to podcasts related to the topic of interest
 
     Scenario: Podcasts Listing
-        Given I am at the "Home" menu of the "Podshare"
-        When I click at the "Explore" button
+        Given I am at the "Explore" menu of the "Podshare" app
         Then I get redirected to the "Explore" menu
         Then The podcasts are displayed by topic
         Then A button "see all" is displayed at each topic
