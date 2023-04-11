@@ -17,8 +17,6 @@ defineSupportCode( function({Given, When, Then}){
     Given(/^I am at the "Home" menu of the "Podshare"$/, async() =>{
         await browser.get("http://localhost:3000/");
         await expect(browser.getTitle()).to.eventually.equal('Podshare');
-
-
     });
 
     When(/^I click at the "Explore" button$/, async() =>{
