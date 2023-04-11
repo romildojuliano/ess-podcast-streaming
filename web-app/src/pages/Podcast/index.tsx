@@ -148,9 +148,10 @@ export default function PodcastPage(){
             fontSize={36}
             size='lg'
             isActive={true}
+            id="favorite-button"
             aria-label='Favorite'
             onClick={(event: any) => requestFavorite()}
-            icon={isFavorite ? <Star color={'#DDC700'}/> :  <StarOff />}
+            icon={isFavorite ? <Star id="star-on" color={'#DDC700'}/> :  <StarOff id="star-off"  />}
           />
         </Flex>
         <Text fontSize='xl'  mt={2} >
