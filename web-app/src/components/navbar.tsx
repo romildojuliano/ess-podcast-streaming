@@ -16,10 +16,11 @@ import {
   useDisclosure,
   useColorModeValue,
   Image,
-  Input
+  Input,
+  Icon
 } from '@chakra-ui/react';
 
-import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, LockIcon } from '@chakra-ui/icons';
 
 import Router from "../Router"
 import { useNavigate } from 'react-router-dom';
@@ -142,7 +143,13 @@ export default function Navbar() {
                 <MenuItem>Teste</MenuItem>
                 <MenuDivider />
                 <MenuItem>Teste</MenuItem>
+                <Box>
+                  
+                </Box>
+                <LockIcon />
+                <Link textColor="black" href="/login" onClick={(e) => {localStorage.setItem("user", ""); window.location.reload()}}> Sair</Link>
               </MenuList>
+              
             </Menu>
           </Flex>
         </Flex>
@@ -156,6 +163,7 @@ export default function Navbar() {
              </NavLink>
               ))}
             </Stack> */}
+            
           </Box>
         ) : null}
       </Box>
