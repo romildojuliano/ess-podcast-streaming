@@ -15,11 +15,11 @@ Feature: Podcast subject grouping
         Then I am redirectet to the "Politics" podcasts menu
  
     Scenario: Podcast Insertion in subject group
-        Given I am a podcaster loged in the system
+        Given I am a podcaster loged in the system with five podcasts registered with "Politics" subject
         When I upload the podcast "Brazilian Elections" whit the tag of subject "Politics"
-        Then The podcast "Brazilian Elections" is propperly inserted at the list of podcasts with subject "Politics"
+        Then The podcast "Brazilian Elections" is propperly inserted at the list of podcasts with subject "Politics" having the system six podcasts with "Politics" subject
 
     Scenario: Podcast Deletion from subject group
-        Given I am a podcaster loged in the system
+        Given I am a podcaster loged in the system with six podcasts registered with "Politics" subject
         When I delete the podcast "Brazilian Elections" with the tag of subject "Politics"
-        Then The podcast "Brazilian Elections" is propperly deleted from the list of podcasts with subject "Politics"
+        Then The podcast "Brazilian Elections" is propperly deleted from the list of podcasts with subject "Politics" having the system five podcasts with "Politics" subject
