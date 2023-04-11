@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const podcastsFilePath = '../samples/podcasts.json'
 
+require('../podcasts')(app);
+
 describe('POST /podcasts/', function () {
 
     before(() => {
@@ -18,7 +20,13 @@ describe('POST /podcasts/', function () {
             "author": "mattvie"
         }
 
-        //fs.writeFileSync(podcastsFilePath, JSON.stringify(sampleData));
+        duplicatedData = {
+            "subject": "Politics",
+            "name": "Dee Snider's Hearing",
+            "link": "https://www.youtube.com/watch?v=S0Vyr1TylTE",
+            "author": "mattvie"
+        }
+
     })
 
     it('Deve adicionar o novo podcast na conta do autor mattvie', function (done) {
@@ -35,6 +43,23 @@ describe('POST /podcasts/', function () {
                 assert.strictEqual(res.body.name, "John Wick goes shopping");
                 assert.strictEqual(res.body.link, "https://www.youtube.com/watch?v=km7DDDE-i0c");
                 assert.strictEqual(res.body.author, "mattvie");
+                done();
+            });
+
+    });
+
+    it('Deve adicionar podcast duplicado na conta do autor mattvie', function (done) {
+        request(app)
+            .post('/podcasts')
+            .type('form')
+            .send(duplicatedData)
+            .set("Content-Type", "application/json")
+            .set('Accept', 'application/json')
+            .expect(400)
+            .end((err, res) => {
+                if (err) return done(err);
+                //assert.strictEqual(res.body.error, "Invalid Request");
+                assert.ifError(null)
                 done();
             });
 
