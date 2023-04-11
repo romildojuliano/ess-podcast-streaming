@@ -10,11 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const JSONDatabase = require('./JSONDatabase');
-const favoritesController = require('./controllers/favorites');
-const followController = require('./controllers/followController');
 
 const db = new JSONDatabase('./samples/users.json');
 
+require('./routes/favorites')(app);
 require('./userData')(app);
 require('./podcasts')(app);
 require('./search')(app, db);
@@ -23,9 +22,6 @@ require('./history')(app);
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
-app.get('/favorites/:username', favoritesController.getUserFavorites);
-app.post('/favorite/:username', favoritesController.favoritePodcast);
 
 //function to get the users i'm following
 app.get('/users/:userId/following', followController.getFollowing);
