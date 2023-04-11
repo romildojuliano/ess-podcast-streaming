@@ -4,18 +4,20 @@ import {
   FavoritesPage,
   PodcastPage,
   ChannelPage,
-  LoginPage,
   Explore,
   Politicsseemore,
   Economyseemore,
   Politicsseemore2,
+  LoginPage,
   Search,
   FollowingPage,
   RegisterPage
 } from "./pages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar";
-import _ from "lodash";
+
+
 function Router() {
   const user = localStorage.getItem("user");
   console.log(user)
@@ -23,7 +25,8 @@ function Router() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/*" element={<LoginPage />} />
+          <Route path="/*" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />}/>
         </Routes>
       </BrowserRouter>
