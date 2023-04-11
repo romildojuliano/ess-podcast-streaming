@@ -7,21 +7,21 @@
     "followers": [],
     "following": [],
     "history": [
-                {
-                  "title": "podciencia",
-                  "date": "2023-03-22",
-                  "description": "avanço na corrida para marte"
-                },
-                {
-                  "title": "podpolitica",
-                  "date": "2023-03-24",
-                  "description": "novas leis estão por vir"
-                },
-                {
-                  "title": "podeconomia",
-                  "date": "2023-03-31",
-                  "description": "ultimas noticias da bolsa"
-                }
+      {
+        "title": "podciencia",
+        "date": "2023-03-22",
+        "description": "avanço na corrida para marte"
+      },
+      {
+        "title": "podpolitica",
+        "date": "2023-03-24",
+        "description": "novas leis estão por vir"
+      },
+      {
+        "title": "podeconomia",
+        "date": "2023-03-31",
+        "description": "ultimas noticias da bolsa"
+      }
     ]
   },
   {
