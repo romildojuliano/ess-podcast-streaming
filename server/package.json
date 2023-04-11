@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha 'tests/**.test.js' --reporter spec",
-    "dev": "nodemon index.js"
+    "dev": "nodemon --ignore ./samples/ index.js"
   },
   "author": "",
   "license": "ISC",
