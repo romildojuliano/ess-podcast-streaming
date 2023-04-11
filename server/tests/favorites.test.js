@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const favoritesFilePath = './samples/favorites.json';
 
-require('../favorites')(app);
+require('../routes/favorites')(app);
 
 describe('GET /favorites', () => {
   before(() => {
