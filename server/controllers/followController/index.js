@@ -105,7 +105,9 @@ class FollowController {
                 usersToUpdate.push(user2);
             })
 
-            usersToUpdate.push({...user, following:[]})
+            user.following = [];
+
+            usersToUpdate.push(user)
 
             db.updateRegisters('username', usersToUpdate)
 

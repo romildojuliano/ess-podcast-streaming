@@ -15,6 +15,7 @@ const db = new JSONDatabase('./samples/users.json');
 const followController = require('./controllers/followController');
 
 require('./routes/favorites')(app);
+require('./routes/follow.routes')(app);
 require('./userData')(app);
 require('./podcasts')(app);
 require('./search')(app, db);
@@ -23,21 +24,6 @@ require('./history')(app);
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
-//function to get the users i'm following
-app.get('/users/:userId/following', followController.getFollowing);
-
-//function to get users that follow me
-app.get('/users/:userId/followers', followController.getFollowers)
-
-//function to create the follow relation
-app.post('/users/:userId/following', followController.follow)
-
-//function to undo the follow relation
-app.delete('/users/:userId/following', followController.unFollow)
-
-//function to unfollow everyone
-app.delete('/users/:userId/unfollow_all', followController.unFollowAll)
 
 app.get('/podcast/:name', (req, res) => {
   var data = JSON.parse(fs.readFileSync('./samples/podcasts.json', 'utf8'));
