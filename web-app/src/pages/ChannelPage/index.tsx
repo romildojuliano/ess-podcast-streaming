@@ -88,25 +88,6 @@ export default function ChannelPage() {
     e.preventDefault();
     const data = { subject, name, link, author };
 
-    //console.log(data);
-
-    // const response = await fetch("http://localhost:4000/podcasts/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data),
-    // });
-
-    // const jsonData = await response.json();
-
-    // fetch("http://localhost:4000/podcasts/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => response.json()) // converter para json
-    //   .then((json) => console.log(json)) //imprimir dados no console
-    //   .catch((err) => console.log(err)); // lidar com os erros por catch
-
     fetch("http://localhost:4000/podcasts/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -119,12 +100,10 @@ export default function ChannelPage() {
         return response;
       })
       .then(function (response) {
-        //console.log("ok");
-        alert("ok");
+        alert("Podcast adicionado com sucesso!");
       })
       .catch(function (error) {
-        //console.log(error);
-        alert("erro");
+        alert("Erro: Podcast duplicado");
       });
 
       window.location.reload()
