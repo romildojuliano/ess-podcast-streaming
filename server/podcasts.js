@@ -43,7 +43,7 @@ module.exports = function (app) {
                 "name": req.body.name,
                 "link": req.body.link,
                 "author": req.body.author,
-                "createdAt": new Date().toISOString(),
+                "created_at": new Date().toISOString(),
                 "image": image_code
             }
 

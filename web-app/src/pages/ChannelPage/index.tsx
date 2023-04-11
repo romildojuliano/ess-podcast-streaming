@@ -27,7 +27,7 @@ interface IUser {
   email: string;
   username: string;
   password: string;
-  createdAt: string;
+  created_at: string;
   followers: string[];
   following: string[];
   history: string[];
@@ -46,7 +46,7 @@ export default function ChannelPage() {
     email: "",
     username: "",
     password: "",
-    createdAt: "",
+    created_at: "",
     followers: [],
     following: [],
     history: [],

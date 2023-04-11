@@ -9,10 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const JSONDatabase = require('./JSONDatabase');
+const favoritesController = require('./controllers/favorites');
 
 const db = new JSONDatabase('./samples/users.json');
 
-require('./favorites')(app);
 require('./userData')(app);
 require('./follow')(app);
 require('./podcasts')(app);
@@ -34,6 +34,9 @@ app.get('/search', (req, res) => {
       res.json(allRecords);
   }
 });
+
+app.get('/favorites/:username', favoritesController.getUserFavorites);
+app.post('/favorite/:username', favoritesController.favoritePodcast);
 
 app.get('/podcast/:name', (req, res) => {
   var data = JSON.parse(fs.readFileSync('./samples/podcasts.json', 'utf8'));
