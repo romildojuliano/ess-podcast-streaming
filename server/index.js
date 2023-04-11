@@ -11,7 +11,7 @@ app.use(cors());
 
 const JSONDatabase = require('./JSONDatabase');
 const favoritesController = require('./controllers/favorites');
-const followController = require('./controllers/follow');
+const followController = require('./controllers/followController');
 
 const db = new JSONDatabase('./samples/users.json');
 
