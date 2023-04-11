@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const border = "0px";
-const server = "http://localhost:4000"
 
 interface IUser {
     email: string;
@@ -25,7 +24,7 @@ function LoginGroup () {
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
     const handleClick = async (e) => {
-        localStorage.setItem("user", "romildo");
+        localStorage.setItem("user", "test");
         console.log(localStorage.getItem("user"));
         window.location.reload();
     };

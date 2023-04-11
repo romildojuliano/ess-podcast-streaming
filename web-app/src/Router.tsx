@@ -30,11 +30,20 @@ function Router() {
   //     </BrowserRouter>
   //   )
   // }
+  useEffect(() => {
+    if (localStorage.getItem("user") === null) {
+      localStorage.setItem("user", "test");
+    }
+  }, []);
+
   const [user, setUser] = useState("");
+  
   useEffect(() => {
     var aux = localStorage.getItem('user')
     setUser(aux === null? '' : aux);
   }, [user])
+
+
 
   return (
     // <HashRouter basename="/">
