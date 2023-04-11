@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, Heading, Image, Text } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, Heading, Image, Text } from '@chakra-ui/react'
 
 function UserCard({person}) {
   return(
@@ -10,7 +10,8 @@ function UserCard({person}) {
     //   </div>
     // </div>
     <Card maxW='sm' align='center'>
-        <Image alt={person.username}/>
+        <Image 
+        src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"alt={person.username}/>
         <CardHeader>
             <Heading size='md' >{person.username}</Heading>
         </CardHeader> 

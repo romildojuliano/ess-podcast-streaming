@@ -9,13 +9,14 @@ import Economyseemore from './Economyseemore'
 import Politicsseemore2 from './Politicsseemore2'
 import Search from './Search'
 import FavoritesPage from './Favorites'
-import RegisterPage from "./RegisterPage"
+import LoginPage from "./LoginPage"
+import RegisterPage from './RegisterPage'
 
 export {
     Home,
     UserPage,
     ChannelPage,
-    RegisterPage,
+    LoginPage,
     PodcastPage,
     Explore,
     Politicsseemore,
@@ -23,5 +24,6 @@ export {
     Politicsseemore2,
     Search,
     FollowingPage,
-    FavoritesPage
+    FavoritesPage,
+    RegisterPage
 };

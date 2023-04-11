@@ -23,16 +23,23 @@ function Search(){
   console.log(jsonUsers)
 
   function searchList() {
-    return (
-      <Scroll>
-        <SearchList filteredPersons={users} />
-      </Scroll>
-    );
+    if(users.length == 0){
+      return (
+        <h2 id="noResult">Nenhum resultado encontrado</h2>
+      )
+    }
+    else{
+      return (
+        <Scroll>
+          <SearchList filteredPersons={users} />
+        </Scroll>
+      );
+    }
   }
 
   return (
-    <div> 
-    <h2>Search Results for: {query}</h2>
+    <div id="searchResults"> 
+    <h1>Search Results for: {query}</h1>
     {searchList()}
     </div>
   );

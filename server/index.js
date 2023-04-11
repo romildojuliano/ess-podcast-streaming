@@ -4,19 +4,20 @@ const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser');
 const port = 4000
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const JSONDatabase = require('./JSONDatabase');
+const favoritesController = require('./controllers/favorites');
 
 const db = new JSONDatabase('./samples/users.json');
 
-require('./favorites')(app);
 require('./userData')(app);
 require('./follow')(app);
 require('./podcasts')(app);
 require('./search')(app, db);
+require('./history')(app);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -34,6 +35,9 @@ app.get('/search', (req, res) => {
       res.json(allRecords);
   }
 });
+
+app.get('/favorites/:username', favoritesController.getUserFavorites);
+app.post('/favorite/:username', favoritesController.favoritePodcast);
 
 app.get('/podcast/:name', (req, res) => {
   var data = JSON.parse(fs.readFileSync('./samples/podcasts.json', 'utf8'));
