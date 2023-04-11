@@ -78,31 +78,29 @@ export default function UserPage(){
   //função para começar a seguir
   const startFollowing = async () => {
     setLoading(true)
-    const { message } = await (
-      await fetch(`http://localhost:4000/users/${loggedUser}/following?user_to_follow=${username}`, {
-        method: 'POST'
-      })
-    ).json()
-    if(message) alert(message)
+    const response = await fetch(`http://localhost:4000/users/${loggedUser}/following?user_to_follow=${username}`, {
+      method: 'POST'
+    })
+    const {message} = await response.json()
+    if(response.status !== 200) alert(message)
     setLoading(false)
   }
 
   //função para parar de seguir
   const stopFollowing = async () => {
     setLoading(true)
-    const { message } = await (
-      await fetch(`http://localhost:4000/users/${loggedUser}/following?user_to_unfollow=${username}`, {
-        method: 'DELETE'
-      })
-    ).json()
-    if(message) alert(message)
+    const response = await fetch(`http://localhost:4000/users/${loggedUser}/following?user_to_unfollow=${username}`, {
+      method: 'DELETE'
+    })
+    const {message} = await response.json()
+    if(response.status !== 200) alert(message)
     onClose();
     setLoading(false)
   }
   
   return (
     <Box bgColor="#1E1E1E" h="90vh">
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} id="confirmation">
         <ModalOverlay />
         <ModalContent bgColor="#252525" color="#eeeeee">
           <ModalHeader>Deixar de seguir?</ModalHeader>
@@ -112,10 +110,10 @@ export default function UserPage(){
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='red' mr={3} onClick={stopFollowing}>
+            <Button id="confirmUF" colorScheme='red' mr={3} onClick={stopFollowing}>
               Sim, deixar de seguir
             </Button>
-            <Button variant='ghost' onClick={onClose}>Não, continuar seguindo</Button>
+            <Button id="cancelUF" variant='ghost' onClick={onClose}>Não, continuar seguindo</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -126,8 +124,29 @@ export default function UserPage(){
           <Flex flexDir="column" color="white" marginLeft="25px" alignItems="flex-start" justifyContent="space-evenly">
             <Heading>{userData.username}</Heading>
             <Text fontSize="20px">{userData.followers.length} seguidores</Text>
-            {!doIFollow && <Button id="followButton" isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={startFollowing}>SEGUIR</Button>}
-            {doIFollow && <Button id="followButton" isLoading={loading} color="#1E1E1E" bgColor="#ABEFED" borderRadius="25px" w="132px" onClick={onOpen}>SEGUINDO</Button>}
+            {!doIFollow && (
+              <Button
+                id="SEGUIR"
+                isLoading={loading}
+                color="#1E1E1E"
+                bgColor="#ABEFED"
+                borderRadius="25px"
+                w="132px"
+                onClick={startFollowing}
+                isDisabled={loggedUser === username}
+              >SEGUIR</Button>
+            )}
+            {doIFollow && (
+              <Button
+                id="SEGUINDO"
+                isLoading={loading}
+                color="#1E1E1E"
+                bgColor="#ABEFED"
+                borderRadius="25px"
+                w="132px"
+                onClick={onOpen}
+              >SEGUINDO</Button>
+            )}
           </Flex>
         </Flex>
       </Flex>
