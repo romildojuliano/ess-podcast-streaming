@@ -14,17 +14,12 @@ async function browserUpdate(){
 
 defineSupportCode( function({Given, When, Then}){
 
-    Given(/^I am at the "Home" menu of the "Podshare"$/, async() =>{
-        await browser.get("http://localhost:3000/");
+    Given(/^I am at the "Explore" menu of the "Podshare" app$/, async() =>{
+        await browser.get("http://localhost:3000/explore");
+        await browserUpdate();
         await expect(browser.getTitle()).to.eventually.equal('Podshare');
     });
 
-    When(/^I click at the "Explore" button$/, async() =>{
-
-        await element(by.className('Explore')).click();
-        
-        
-    });
 
     Then(/^I get redirected to the "Explore" menu$/, async() => {
         
