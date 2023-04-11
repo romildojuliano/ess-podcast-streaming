@@ -1,7 +1,6 @@
 const fs = require('fs');
 const JSONDatabase = require('./JSONDatabase');
 
-
 module.exports = function(app, db){
     app.get('/search', (req, res) => {
         console.log('Search Request Recieved')
