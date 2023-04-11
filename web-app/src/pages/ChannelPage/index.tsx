@@ -190,8 +190,8 @@ export default function ChannelPage() {
                         onChange={(e) => setSubject(e.target.value)}
                         placeholder="Escolha uma Categoria"
                       >
-                        <option value="politics">Politics</option>
-                        <option value="economy">Economy</option>
+                        <option value="Politics">Politics</option>
+                        <option value="Economy">Economy</option>
                       </Select>
                     </FormControl>
 
