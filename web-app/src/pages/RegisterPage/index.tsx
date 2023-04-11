@@ -1,9 +1,9 @@
-import { Heading } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/layout";
 
-export default function RegisterPage() {
+export default function RegisterPage () {
     return (
-    <Heading>
-        
-    </Heading>
+        <Box>
+            <Text>Hello World!</Text>
+        </Box>
     );
 }
