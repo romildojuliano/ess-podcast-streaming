@@ -102,7 +102,7 @@ export default function FavoritesPage(){
     <HStack spacing={6} alignItems={'start'}>
       {
         favorites?.map((favorite) => (
-          <Clickable as="div" onClick={(event: any) => openPodcastPage(favorite)} w={'200px'}>
+          <Clickable as="div" id="favorite-option" onClick={(event: any) => openPodcastPage(favorite)} w={'200px'}>
             <Image  boxSize='200px' borderRadius='8px' alt={favorite.name} src={favorite.image} fallbackSrc={require('../../styles/assets/placeholderPodcastImage.png')} />
             <Text fontSize={'2xl'} mt={1}>{favorite.name}</Text>
             <Text fontSize={'sm'}> <Avatar
@@ -116,7 +116,7 @@ export default function FavoritesPage(){
     { favorites?.length == 0 && loading == false ? 
       <VStack mt={12} justifyContent={'center'}>
         <WarningIcon fontSize={'6xl'}></WarningIcon>
-        <Heading fontWeight={'normal'} fontSize={'xl'}>Nada ainda em Favoritos</Heading>
+        <Heading id="favorite-none" fontWeight={'normal'} fontSize={'xl'}>Nada ainda em Favoritos</Heading>
       </VStack>
       : <></>
     }
