@@ -4,27 +4,27 @@ let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
 
+async function browserUpdate(){
+
+    await browser.manage().window().maximize();
+    await browser.manage().window().setSize(500,500);
+    await browser.manage().window().maximize();
+}
+
 
 defineSupportCode( function({Given, When, Then}){
 
-    Given(/^I am at the "Home" menu of the "Podshare"$/, async() =>{
-        await browser.get("http://localhost:3000/");
+    Given(/^I am at the "Explore" menu of the "Podshare" app$/, async() =>{
+        await browser.get("http://localhost:3000/explore");
+        await browserUpdate();
         await expect(browser.getTitle()).to.eventually.equal('Podshare');
     });
 
-    When(/^I click at the "Explore" button$/, async() =>{
-
-        await element(by.className('Explore')).click();
-        
-        
-    });
 
     Then(/^I get redirected to the "Explore" menu$/, async() => {
         
         await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/explore");
-        await browser.manage().window().maximize();
-        await browser.manage().window().setSize(500,500);
-        await browser.manage().window().maximize();
+        await browserUpdate();
 
 
 
@@ -48,9 +48,7 @@ defineSupportCode( function({Given, When, Then}){
     Given(/^I am at the "Podcasts" menu$/, async() =>{
 
         await browser.get("http://localhost:3000/explore");
-        await browser.manage().window().maximize();
-        await browser.manage().window().setSize(500,500);
-        await browser.manage().window().maximize();
+        await browserUpdate();
         await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/explore");
     });
 
@@ -69,9 +67,7 @@ defineSupportCode( function({Given, When, Then}){
     Given(/^I am a podcaster loged in the system with five podcasts registered with "Politics" subject$/, async() =>{
 
 
-        await browser.manage().window().maximize();
-        await browser.manage().window().setSize(500,500);
-        await browser.manage().window().maximize();
+        await browserUpdate();
         //Por nao possuir o acesso a funcao de insersao de podcast durante o desenvolvimento
         //A insercao foi feita de modo "Artificial"
         var allPodcasts : ElementArrayFinder = element.all(by.id('cabecalho'));
@@ -83,9 +79,7 @@ defineSupportCode( function({Given, When, Then}){
 
         //Temporary for replacement of a post method
         await browser.get("http://localhost:3000/Politicsseemore2");
-        await browser.manage().window().maximize();
-        await browser.manage().window().setSize(500,500);
-        await browser.manage().window().maximize();
+        await browserUpdate();
         await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/Politicsseemore2");
         
 
@@ -102,9 +96,7 @@ defineSupportCode( function({Given, When, Then}){
 
 
         await browser.get("http://localhost:3000/Politicsseemore2");
-        await browser.manage().window().maximize();
-        await browser.manage().window().setSize(500,500);
-        await browser.manage().window().maximize();
+        await browserUpdate();
         await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/Politicsseemore2");
 
 
@@ -114,9 +106,7 @@ defineSupportCode( function({Given, When, Then}){
 
 
         await browser.get("http://localhost:3000/Politicsseemore");
-        await browser.manage().window().maximize();
-        await browser.manage().window().setSize(500,500);
-        await browser.manage().window().maximize();
+        await browserUpdate();
         await expect(browser.getCurrentUrl()).to.eventually.equal("http://localhost:3000/Politicsseemore");
 
 
@@ -126,9 +116,7 @@ defineSupportCode( function({Given, When, Then}){
 
 
 
-        await browser.manage().window().maximize();
-        await browser.manage().window().setSize(500,500);
-        await browser.manage().window().maximize();
+        await browserUpdate();
         var allPodcasts : ElementArrayFinder = element.all(by.id('cabecalho'));
         await allPodcasts.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(5));
 

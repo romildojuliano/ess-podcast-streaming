@@ -18,7 +18,7 @@ export default function UserPage(){
   });
   const [loggedUser, setLoggedUser] = useState('')
 
-  //função para pegar dados do usuario logado no sistema do localStorage do navegador
+  //função para pegar a lista de seguidores do usuario logado
   useEffect(() => {
     const getUserData = async() => {
       const { data } = await (await fetch(`http://localhost:4000/getUser/${loggedUser}`)).json()
@@ -28,7 +28,7 @@ export default function UserPage(){
     getUserData()
   }, [loggedUser]);
 
-  //checa se o usuario segue
+  //função para pegar dados do usuario logado no sistema do localStorage do navegador
   useEffect(() => {
     const user = localStorage.getItem('user');
     setLoggedUser(user ? user : '')
