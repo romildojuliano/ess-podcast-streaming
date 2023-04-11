@@ -8,28 +8,26 @@ app.use(bodyParser.json());
 const favoritesFilePath = './samples/favorites.json';
 
 require('../routes/favorites')(app);
+const sampleData = {
+  "ramonwanderley": [
+    { "username": "ramonwanderley", "podcast": "GIT e GITHUB", "created_at": "2023-04-09T19:49:35.755Z" },
+    { "username": "ramonwanderley", "podcast": "World Economic Crisis", "created_at": "2023-04-09T19:50:32.701Z" }
+  ],
+  "mattvie": [
+    { "username": "mattvie", "podcast": "FED", "created_at": "2023-04-07T16:02:47.137Z" },
+    { "username": "mattvie", "podcast": "US Debt", "created_at": "2023-04-07T17:21:56.600Z" }
+  ]
+};
+
 
 describe('GET /favorites', () => {
   before(() => {
-    // Create a sample data file before running the tests
-    const sampleData = {
-      "ramonwanderley": [
-        { "username": "ramonwanderley", "podcast": "GIT e GITHUB", "created_at": "2023-04-09T19:49:35.755Z" },
-        { "username": "ramonwanderley", "podcast": "World Economic Crisis", "created_at": "2023-04-09T19:50:32.701Z" }
-      ],
-      "mattvie": [
-        { "username": "mattvie", "podcast": "FED", "created_at": "2023-04-07T16:02:47.137Z" },
-        { "username": "mattvie", "podcast": "US Debt", "created_at": "2023-04-07T17:21:56.600Z" }
-      ]
-    }; 
-
-    fs.writeFileSync(favoritesFilePath, JSON.stringify(sampleData));
+    fs.writeFileSync(favoritesFilePath, JSON.stringify(sampleData, null, 2));
 
   });
 
   after(() => {
-    // Delete the sample data file after running the tests
-    fs.unlinkSync(favoritesFilePath);
+    fs.writeFileSync(favoritesFilePath, JSON.stringify(sampleData, null, 2));
   });
 
   it('Deve retornar os favoritos do usuário ramonwanderley', (done) => {
@@ -57,25 +55,12 @@ describe('GET /favorites', () => {
 
 describe('POST /favorite', () => {
   before(() => {
-    // Create a sample data file before running the tests
-    const sampleData = {
-      "ramonwanderley": [
-        { "username": "ramonwanderley", "podcast": "GIT e GITHUB", "created_at": "2023-04-09T19:49:35.755Z" },
-        { "username": "ramonwanderley", "podcast": "World Economic Crisis", "created_at": "2023-04-09T19:50:32.701Z" }
-      ],
-      "mattvie": [
-        { "username": "mattvie", "podcast": "FED", "created_at": "2023-04-07T16:02:47.137Z" },
-        { "username": "mattvie", "podcast": "US Debt", "created_at": "2023-04-07T17:21:56.600Z" }
-      ]
-    }; 
-
-    fs.writeFileSync(favoritesFilePath, JSON.stringify(sampleData));
+    fs.writeFileSync(favoritesFilePath, JSON.stringify(sampleData, null, 2));
 
   });
 
   after(() => {
-    // Delete the sample data file after running the tests
-    fs.unlinkSync(favoritesFilePath);
+    fs.writeFileSync(favoritesFilePath, JSON.stringify(sampleData, null, 2));
   });
 
   it('Deve favoritar o podcast Brexit no usuário ramonwanderley', (done) => {
