@@ -24,10 +24,29 @@ const userLogged = async(): Promise<string> => {
 
 defineSupportCode( function({ registerHandler, Given, When, Then}){
     registerHandler('BeforeFeatures', () =>{
-        fs.writeFileSync(__dirname +'/../../server/samples/favorites.json', JSON.stringify({"ramonwanderley":[
-            {"username":"ramonwanderley","podcast":"GIT e GITHUB","created_at":"2023-04-10T23:05:08.388Z"}],
-            "mattvie":[{"username":"mattvie","podcast":"FED","created_at":"2023-04-07T16:02:47.137Z"},
-        {"username":"mattvie","podcast":"US Debt","created_at":"2023-04-07T17:21:56.600Z"}]}) );
+        const data =
+        {
+            "mattvie": [
+              {
+                "username": "mattvie",
+                "podcast": "FED",
+                "created_at": "2023-04-07T16:02:47.137Z"
+              },
+              {
+                "username": "mattvie",
+                "podcast": "US Debt",
+                "created_at": "2023-04-07T17:21:56.600Z"
+              }
+            ],
+            "ramonwanderley": [
+              {
+                "username": "ramonwanderley",
+                "created_at": "2023-04-11T10:52:26.495Z",
+                "podcast": "GIT e GITHUB"
+              }
+            ]
+        }
+        fs.writeFileSync(__dirname +'/../../server/samples/favorites.json', JSON.stringify(data) );
         
     });
 
