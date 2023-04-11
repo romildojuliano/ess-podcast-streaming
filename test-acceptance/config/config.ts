@@ -23,6 +23,7 @@ export let config: Config = {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
 
+
     },
     cucumberOpts: {
         compiler: "ts:ts-node/register",
