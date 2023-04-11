@@ -24,16 +24,11 @@ function LoginGroup () {
     const handleUsernameChange = (e) => setUsername(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
-    const navigate = useNavigate()
-
     const handleClick = async (e) => {
-        // const val = ;
         localStorage.setItem("user", "romildo");
         console.log(localStorage.getItem("user"));
-        setTimeout(() => {}, 1000);
-        navigate("/");
+        window.location.reload();
     };
-
 
     return (
         <Stack spacing="2" border={border} w="15%">
@@ -46,8 +41,9 @@ function LoginGroup () {
                 <FormLabel fontWeight="bold">Senha</FormLabel>
                 <Input type="password" value={password} onInput={handlePasswordChange} placeholder="Senha" border={border} size="sm" variant="filled"/> 
             </FormControl>
+
             <Button 
-                colorScheme="orange" 
+                colorScheme="orange"
                 type="submit" 
                 variant="solid" 
                 marginTop="10%" 
