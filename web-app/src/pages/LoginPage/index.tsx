@@ -15,16 +15,6 @@ const border = "0px";
 // }
 
 
-function MyFunctionalLoginComponent (props) {
-    
-
-    return (
-        <>
-            
-        </>
-    );
-}
-
 function LoginGroup () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -33,7 +23,7 @@ function LoginGroup () {
     const handlePasswordChange = (e) => setPassword(e.target.value);
     
     const handleClick = (e) => {
-        
+
     };
 
     return (
