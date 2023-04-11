@@ -1,21 +1,51 @@
-import { Center, Image, Input, Box, Button, FormControl, Stack, Text, VStack, Link } from "@chakra-ui/react";
+import { Center, Image, Input, Box, Button, FormControl, Stack, VStack, Link, FormLabel } from "@chakra-ui/react";
 import podshare_logo from '../../styles/assets/podshare-logo.svg';
+import { useState } from 'react';
 // import { Link } from "react-router-dom";
 
 const border = "0px";
 
+// function tryToLogin(click) {
+//     var form = new FormData(document.getElementById("username-input"));
+//     // console.log(username)
+//     fetch(`/login/${form}`, {
+//         method: "POST",
+//         body: form
+//     });
+// }
+
+
+function MyFunctionalLoginComponent (props) {
+    
+
+    return (
+        <>
+            
+        </>
+    );
+}
+
 function LoginGroup () {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleUsernameChange = (e) => setUsername(e.target.value)
+    const handlePasswordChange = (e) => setPassword(e.target.value);
+    
+    const handleClick = (e) => {
+        
+    };
+
     return (
         <Stack spacing="2" border={border} w="15%">
-            <Text align="center" fontWeight="bold">Usuário ou E-mail</Text>    
-            
             <FormControl alignContent="center" alignItems="center" alignSelf="center" marginTop="15%">
-                <Input type="email" placeholder="E-mail" border={border} marginBottom="2.5%" size="sm" variant="filled" />
+                <FormLabel fontWeight="bold">Usuário</FormLabel>            
+                <Input value={username} onInput={handleUsernameChange} type="email" id="username-input" placeholder="E-mail" border={border} marginBottom="2.5%" size="sm" variant="filled" />
             </FormControl>
             
-            <Text align="center" fontWeight="bold">Senha</Text>
             <FormControl>
-                <Input type="password" placeholder="Senha" border={border} size="sm" variant="filled"/> 
+                <FormLabel fontWeight="bold">Senha</FormLabel>
+                <Input type="password" value={password} onInput={handlePasswordChange} placeholder="Senha" border={border} size="sm" variant="filled"/> 
             </FormControl>
             <Button 
                 colorScheme="orange" 
@@ -25,6 +55,7 @@ function LoginGroup () {
                 marginLeft="35%" 
                 w="40%" 
                 alignSelf="center"
+                onClick={handleClick}
             >Login</Button>
         </Stack>
     );
@@ -38,7 +69,7 @@ export default function LoginPage() {
                 <LoginGroup />
             </VStack>
             <Center>
-                <Link marginTop=".75%" href="/register">Não possui uma conta? Clique aqui</Link>
+                <Link marginTop=".75%" href="/register" color="#a3d2fe">Não possui uma conta? Clique aqui</Link>
             </Center>
         </Box>
 
