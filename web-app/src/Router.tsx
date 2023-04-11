@@ -43,8 +43,6 @@ function Router() {
     setUser(aux === null? '' : aux);
   }, [user])
 
-
-
   return (
     // <HashRouter basename="/">
       
