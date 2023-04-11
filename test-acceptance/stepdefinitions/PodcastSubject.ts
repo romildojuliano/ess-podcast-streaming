@@ -11,7 +11,7 @@ defineSupportCode( function({Given, When, Then}){
         await browser.get("http://localhost:3000/");
         await expect(browser.getTitle()).to.eventually.equal('Podshare');
 
-https://github.com/mattvie/ess-podcast-streaming/pulls
+
     });
 
     When(/^I click at the "Explore" button$/, async() =>{
