@@ -29,6 +29,16 @@ class JSONDatabase {
     return data ? Object.values(data) : [];
   }
 
+  getData() {
+    const data = this.readData();
+    return data ? data : {};
+  }
+
+  getPartition(key){
+    const data = this.readData();
+    return data ? (data[key]|| []) : [];
+  }
+
   getAllMatchingNames(pattern) {
     const data = this.readData();
     const filteredData = Object.values(data).filter(obj => {
