@@ -156,7 +156,8 @@ export default function ChannelPage() {
               color="#1E1E1E"
               bgColor="#ABEFED"
               borderRadius="25px"
-              w="132px"
+              w="132px" 
+              className="UPLOAD"
             >
               UPLOAD
             </Button>
@@ -180,6 +181,7 @@ export default function ChannelPage() {
                         ref={initialRef}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        ng-model="forms.name"
                       />
                     </FormControl>
 
@@ -190,8 +192,8 @@ export default function ChannelPage() {
                         onChange={(e) => setSubject(e.target.value)}
                         placeholder="Escolha uma Categoria"
                       >
-                        <option value="Politics">Politics</option>
-                        <option value="Economy">Economy</option>
+                        <option value="Politics" className="forms-politics">Politics</option>
+                        <option value="Economy" className="forms-economy">Economy</option>
                       </Select>
                     </FormControl>
 
@@ -200,6 +202,7 @@ export default function ChannelPage() {
                       <Input
                         value={link}
                         onChange={(e) => setLink(e.target.value)}
+                        ng-model="forms.link"
                       />
                     </FormControl>
 
@@ -209,8 +212,9 @@ export default function ChannelPage() {
                         mr={3}
                         type="submit"
                         onClick={onClose}
+                        className="submit"
                       >
-                        Upload
+                        Enviar
                       </Button>
                       <Button colorScheme="blue" onClick={onClose}>
                         Fechar
@@ -242,7 +246,7 @@ export default function ChannelPage() {
               objectFit="cover"
               borderRadius="10px"
             />
-            <Heading marginTop="10px" fontSize="20px">
+            <Heading marginTop="10px" fontSize="20px" id="podcast-name">
               {podcast.name}
             </Heading>
             <Text>{podcast.subject}</Text>
