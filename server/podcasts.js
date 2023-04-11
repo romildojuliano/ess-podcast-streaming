@@ -3,13 +3,13 @@ var fs = require('fs');
 module.exports = function (app) {
 
     app.post('/podcasts', (req, res) => {
-        if (req.body.subject == null) {
+        if (req.body.subject == "") {
             res.status(400).send('Invalid Request (Subject Missing').end();
-        } else if (req.body.name == null) {
+        } else if (req.body.name == "") {
             res.status(400).send('Invalid Request (Name Missing').end();
-        } else if (req.body.link == null) {
+        } else if (req.body.link == "") {
             res.status(400).send('Invalid Request (Link Missing').end();
-        } else if (req.body.author == null) {
+        } else if (req.body.author == "") {
             res.status(400).send('Invalid Request (Author Missing').end();
         } else {
 

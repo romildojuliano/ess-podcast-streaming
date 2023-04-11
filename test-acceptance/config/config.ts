@@ -8,8 +8,7 @@ export let config: Config = {
 
     capabilities: {
         browserName: 'chrome',
-        version: '112.0.5615.49',
-       
+        version: '122.0.5615.49',
     },
 
     framework: 'custom',
