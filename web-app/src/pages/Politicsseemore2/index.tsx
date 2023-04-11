@@ -55,7 +55,7 @@ export default function Politicsseemore2(){
           <Heading>Politics
             <SimpleGrid id="Grid" minChildWidth='120px' spacing='40px'>
               {cardsPolitics.map((card, index) => (
-                <Heading id="HEADING">  
+                <Heading id="cabecalho">  
                   <Box
                     id="CAIXA"
                     key={index}
