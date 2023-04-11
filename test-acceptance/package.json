@@ -19,10 +19,11 @@
     "jasmine": "^4.6.0",
     "mkdirp": "^0.5.1",
     "protractor-cucumber-framework": "^3.1.1",
-    "typescript": "^2.9.2"
+    "typescript": "^3.7.2"
   },
   "dependencies": {
     "cucumber-html-reporter": "^4.0.5",
+    "fs": "0.0.1-security",
     "protractor": "^5.1.2",
     "ts-node": "^3.1.0",
     "webdriver-manager": "^12.1.9"
