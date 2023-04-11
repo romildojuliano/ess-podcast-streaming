@@ -1,4 +1,3 @@
-import { BeforeAll } from "@cucumber/cucumber";
 import { defineSupportCode } from "cucumber";
 import JSONDatabase from "../../server/JSONDatabase"
 const fs = require('fs')
