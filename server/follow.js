@@ -120,4 +120,29 @@ module.exports = function(app){
 
         res.json(response);
     })
+
+
+    //function to unfollow everyone
+    app.delete('/users/:userId/unfollow_all', (req, res) => {
+        const userID = req.params.userId;
+        const users = db.readData();
+
+        const id = users.findIndex(user => user.username === userID)
+
+        users[id].following.forEach(user2 => {
+            const id2 = users.findIndex(user => user.username === user2);
+            users[id2].followers.pop(userID);
+        })
+
+        users[id].following = [];
+
+        db.writeData(users);
+
+        const response = {
+            data: users[id].following,
+            message: ''
+        }
+
+        res.json(response);
+    })
 }
