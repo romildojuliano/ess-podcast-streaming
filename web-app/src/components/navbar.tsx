@@ -40,12 +40,14 @@ const NavBarPageButton = {
 type NavProps = {
   href: string,
   children: ReactNode
+  id: string,
 }
 
 const NavLink = (props: NavProps) => (
   <Link
     px={2}
     py={1}
+    id={props.id}
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
@@ -110,7 +112,7 @@ export default function Navbar() {
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
               {Links.map((link, index) => (
-                <NavLink {...NavBarPageButton}  key={link.nome} href={link.href}>
+                <NavLink {...NavBarPageButton} id={link.nome} key={link.nome} href={link.href}>
                   {React.createElement(IconLinks[index])}
                   <br/>
                   {link.nome}
