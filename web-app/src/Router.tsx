@@ -18,19 +18,19 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 
 function Router() {
-  const user = localStorage.getItem("user");
-  console.log(user)
-  if (!user) {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/*" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />}/>
-        </Routes>
-      </BrowserRouter>
-    )
-  }
+  // const user = localStorage.getItem("user");
+  // console.log(user)
+  // if (!user) {
+  //   return (
+  //     <BrowserRouter>
+  //       <Routes>
+  //         <Route path="/*" element={<Navigate to="/login" />} />
+  //         <Route path="/login" element={<LoginPage />} />
+  //         <Route path="/register" element={<RegisterPage />}/>
+  //       </Routes>
+  //     </BrowserRouter>
+  //   )
+  // }
 
   return (
     <BrowserRouter>

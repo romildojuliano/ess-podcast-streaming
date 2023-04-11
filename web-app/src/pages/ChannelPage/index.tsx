@@ -126,6 +126,8 @@ export default function ChannelPage() {
         //console.log(error);
         alert("erro");
       });
+
+      window.location.reload()
   };
 
   return (
