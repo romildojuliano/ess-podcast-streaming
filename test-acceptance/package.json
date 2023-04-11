@@ -21,8 +21,10 @@
     "typescript": "3.6.4"
   },
   "dependencies": {
+    "@cucumber/cucumber": "^9.1.0",
     "cucumber-html-reporter": "^4.0.5",
     "fs": "0.0.1-security",
+    "node-fetch": "^2.6.9",
     "protractor": "^5.1.2",
     "request-promise": "^4.2.6",
     "ts-node": "^3.1.0",
