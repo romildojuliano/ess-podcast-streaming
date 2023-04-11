@@ -6,7 +6,23 @@
     "created_at": "2020-01-23T01:23:45.678-03:00",
     "followers": [],
     "following": [],
-    "history": []
+    "history": [
+                {
+                  "title": "podciencia",
+                  "date": "2023-03-22",
+                  "description": "avanço na corrida para marte"
+                },
+                {
+                  "title": "podpolitica",
+                  "date": "2023-03-24",
+                  "description": "novas leis estão por vir"
+                },
+                {
+                  "title": "podeconomia",
+                  "date": "2023-03-31",
+                  "description": "ultimas noticias da bolsa"
+                }
+    ]
   },
   {
     "email": "rjal@cin.ufpe.br",
@@ -14,7 +30,8 @@
     "password": "827f993c7f552c119c09f37de820eac9dde5dd682c462a06a879d65f59f9bbe7",
     "created_at": "2021-04-25T01:23:45.678-03:00",
     "followers": [],
-    "following": []
+    "following": [],
+    "history": []
   },
   {
     "email": "mvmf@cin.ufpe.br",

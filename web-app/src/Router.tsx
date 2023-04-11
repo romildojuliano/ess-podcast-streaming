@@ -4,27 +4,31 @@ import {
   FavoritesPage,
   PodcastPage,
   ChannelPage,
-  RegisterPage,
+  LoginPage,
   Explore,
   Politicsseemore,
   Economyseemore,
   Politicsseemore2,
   Search,
   FollowingPage,
+  RegisterPage
 } from "./pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
+import _ from "lodash";
 function Router() {
   const user = localStorage.getItem("user");
-  // if (!user) {
-  //   return (
-  //     <BrowserRouter>
-  //       <Routes>
-  //         <Route path="/register" element={<RegisterPage />} />
-  //       </Routes>
-  //     </BrowserRouter>
-  //   )
-  // }
+  console.log(user)
+  if (!user) {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />}/>
+        </Routes>
+      </BrowserRouter>
+    )
+  }
 
   return (
     <BrowserRouter>
@@ -42,7 +46,7 @@ function Router() {
         <Route path="/Economyseemore" element={<Economyseemore />} />
         <Route path="/Politicsseemore2" element={<Politicsseemore2 />} />
         <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        {/* <Route path="/register" element={<RegisterPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
