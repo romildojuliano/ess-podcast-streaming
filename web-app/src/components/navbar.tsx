@@ -139,7 +139,13 @@ export default function Navbar() {
               <MenuList>
                 <MenuItem>Teste</MenuItem>
                 <MenuDivider />
-                <MenuItem>Teste</MenuItem>
+                <MenuItem>
+                  <Link
+                    textColor="black" 
+                    onClick={() => {localStorage.setItem("user", ""); window.location.reload()}} href="/login">
+                      Sair
+                    </Link>
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -154,6 +160,7 @@ export default function Navbar() {
              </NavLink>
               ))}
             </Stack> */}
+            
           </Box>
         ) : null}
       </Box>
