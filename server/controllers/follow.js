@@ -1,12 +1,9 @@
-const fs = require('fs');
-const JSONDatabase = require('./JSONDatabase');
+const JSONDatabase = require('../JSONDatabase');
 
 const db = new JSONDatabase('./samples/users.json');
 
-module.exports = function(app){
-
-    //function to get the users i'm following
-    app.get('/users/:userId/following', (req, res) => {
+class FollowController {
+    async getFollowing(req, res) {
         const userID = req.params.userId;
         const data = db.getAllMatchingNames([userID])[0];
 
@@ -17,10 +14,9 @@ module.exports = function(app){
         }
 
         res.json(response);
-    })
+    }
 
-    //function to get users that follow me
-    app.get('/users/:userId/followers', (req, res) => {
+    async getFollowers(req, res) {
         const userID = req.params.userId;
         const data = db.getAllMatchingNames([userID])[0];
 
@@ -31,10 +27,9 @@ module.exports = function(app){
         }
 
         res.json(response);
-    })
+    }
 
-    //function to create the follow relation
-    app.post('/users/:userId/following', (req, res) => {
+    async follow(req, res) {
         const userID = req.params.userId;
         const userToFollow = req.query.user_to_follow;
         const users = db.readData();
@@ -78,10 +73,9 @@ module.exports = function(app){
         }
 
         res.json(response);
-    })
+    }
 
-    //function to undo the follow relation
-    app.delete('/users/:userId/following', (req, res) => {
+    async unFollow(req, res){
         const userID = req.params.userId;
         const userToUnfollow = req.query.user_to_unfollow;
         const users = db.readData();
@@ -119,11 +113,9 @@ module.exports = function(app){
         }
 
         res.json(response);
-    })
+    }
 
-
-    //function to unfollow everyone
-    app.delete('/users/:userId/unfollow_all', (req, res) => {
+    async unFollowAll(req, res) {
         const userID = req.params.userId;
         const users = db.readData();
 
@@ -144,5 +136,7 @@ module.exports = function(app){
         }
 
         res.json(response);
-    })
+    }
 }
+
+module.exports = new FollowController();
