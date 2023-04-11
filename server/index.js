@@ -42,22 +42,17 @@ app.delete('/users/:userId/following', followController.unFollow)
 //function to unfollow everyone
 app.delete('/users/:userId/unfollow_all', followController.unFollowAll)
 
-app.get('/search', (req, res) => {
-  console.log('Search Request Recieved')
-  const query = req.query.q;
-  console.log(query)
-  if (query) {
-      const results = db.getAllMatchingNames(query);
-      res.json(results);
-  } else {
-      const allRecords = db.getAll();
-      res.json(allRecords);
-  }
-});
-
 app.get('/podcast/:name', (req, res) => {
   var data = JSON.parse(fs.readFileSync('./samples/podcasts.json', 'utf8'));
   res.json(data.find(({name}) => name == req.params.name));
+})
+
+app.post('/createUser/', (req, res) => {
+  var data = JSON.parse(fs.readFileSync('./samples/users.json', 'utf-8'))
+  if (data.find(({name}) => name == req.params.name)) {
+    res.status(500)
+  }
+  data.push(req.body)
 })
 
 app.listen(port, () => {
