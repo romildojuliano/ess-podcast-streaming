@@ -15,42 +15,52 @@ module.exports = function(app){
             message: data ? `Ouviu ${data.history.length} podcasts` : 'Ainda não ouviu nenhum podcast'
         }
 
-
         res.json(response);
     })
 
+    //filtro de podcasts ouvidos antes da data
     app.get('/users/:username/history/filter', (req, res) => {
         const username = req.params.username;
         const data = db.getAllMatchingNames([username])[0];
-        const filter = "2023-03-28";
-        const datafinal = [];
-
-        const date = new Date(filter);
-        const oneDay = 24 * 60 * 60 * 1000; // milissegundos em um dia
-        // Arredonda a diferença de dias para baixo para desconsiderar frações de dia
-        const totalDaysFilter = Math.floor((date) / oneDay);
-
+        const filter = stringToTotalDays("2023-03-28");
+        const finaldata = [];
+        
         let j = 0;
+        
 
-        for (let i = 0; i < data.history.length; i++) {
-            const date2 = new Date(data.history[i].date);
-            const totalDaysHistory = Math.floor((date2) / oneDay);
-            if (totalDaysHistory < totalDaysFilter) {
-                datafinal[j] = data.history[i];
-                j++;
+        if (data.history == undefined)
+            data.history = null
+
+        else{
+            for (let i = 0; i < data.history.length; i++) {
+                if (stringToTotalDays(data.history[i].date) < filter) {
+                    finaldata[j] = data.history[i];
+                    j++;
+                }
             }
         }
 
 
-
         const response = {
-            status: datafinal ? 200 : 404,
-            data: data ? datafinal : null,
-            message: data != null ? `Ouviu ${datafinal.length} podcasts, são eles` : 'Não ouviu nenhum podcast antes desta data'
+            status: finaldata ? 200 : 404,
+            data: data ? finaldata : null,
+            message: data != null ? `Ouviu ${finaldata.length} podcasts, são eles` : 'Não ouviu nenhum podcast antes desta data'
         };
-
+    
         res.json(response);
     })
+    
 
+    
 }
 
+function stringToTotalDays(dateString) {
+    const date = new Date(dateString);
+    const oneDay = 24 * 60 * 60 * 1000; // milissegundos em um dia
+    
+    // Arredonda a diferença de dias para baixo para desconsiderar frações de dia
+    const totalDays = Math.floor((date) / oneDay);
+  
+    return totalDays;
+  }
+  
