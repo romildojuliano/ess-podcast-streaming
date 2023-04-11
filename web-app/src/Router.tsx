@@ -44,10 +44,6 @@ function Router() {
   }, [user])
 
   return (
-    // <HashRouter basename="/">
-      
-    // </HashRouter>
-
     <BrowserRouter>
         {
           user === '' ?
