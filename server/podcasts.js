@@ -3,13 +3,13 @@ var fs = require('fs');
 module.exports = function (app) {
 
     app.post('/podcasts', (req, res) => {
-        if (req.body.subject == null) {
+        if (req.body.subject == "") {
             res.status(400).send('Invalid Request (Subject Missing').end();
-        } else if (req.body.name == null) {
+        } else if (req.body.name == "") {
             res.status(400).send('Invalid Request (Name Missing').end();
-        } else if (req.body.link == null) {
+        } else if (req.body.link == "") {
             res.status(400).send('Invalid Request (Link Missing').end();
-        } else if (req.body.author == null) {
+        } else if (req.body.author == "") {
             res.status(400).send('Invalid Request (Author Missing').end();
         } else {
 
@@ -65,6 +65,13 @@ module.exports = function (app) {
         var podcasts = JSON.parse(rawdata)
         var podeconomy = podcasts.filter(x => x.subject == "Economy")
         res.send(podeconomy)
+    })
+
+    app.get('/podcasts/politics2', (req, res) => {
+        let rawdata = fs.readFileSync('./samples/podcasts2.json', 'utf-8');
+        let podcasts = JSON.parse(rawdata)
+        let podpolitics = podcasts.filter(x => x.subject == "Politics")
+        res.send(podpolitics)
     })
 
 }

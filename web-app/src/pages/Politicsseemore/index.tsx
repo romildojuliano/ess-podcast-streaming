@@ -53,35 +53,26 @@ export default function Politicsseemore(){
   return (
     <Heading>
           <Heading>Politics
-            <SimpleGrid minChildWidth='120px' spacing='40px'>
+            <SimpleGrid id="Grid" minChildWidth='120px' spacing='40px'>
               {cardsPolitics.map((card, index) => (
-                <Box
-                  key={index}
-                  height='calc(30vh)'
-                  position="relative"
-                  backgroundPosition="center"
-                  backgroundRepeat="no-repeat"
-                  backgroundSize="cover"
-                  backgroundImage={`url(${card.image})`}
-                  >
-                  {/* This is the block you need to change, to customize the caption */}
-                  <Container size="container.lg" height="600px" position="relative">
-                    <Stack
-                      spacing={6}
-                      w={'full'}
-                      maxW={'lg'}
-                      position="absolute"
-                      top="50%"
-                      transform="translate(0, -50%)">
-                      <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                        {card.title}
-                      </Heading>
-                    </Stack>
-                  </Container>
-                </Box>
+                <Heading id="cabecalho">  
+                  <Box
+                    id="CAIXA"
+                    key={index}
+                    height='calc(30vh)'
+                    position="relative"
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                    backgroundImage={`url(${card.image})`}
+                    >
+                  </Box>
+                </Heading>  
               ))}
             </SimpleGrid>
           </Heading>
     </Heading>
   );
 }
+
+
