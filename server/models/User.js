@@ -4,11 +4,11 @@ class User {
         this.email = obj.email || '';
         this.username = obj.username || '';
         this.password = obj.password || '';
-        this.created_at = obj.created_at || (new Date.now()).toString();
+        this.created_at = obj.created_at || '';
         this.followers = obj.followers || [];
         this.following = obj.following || [];
-        this.following = obj.history || [];
+        this.history = obj.history || [];
     }
 }
 
-module.exports = Podcast;
+module.exports = User;

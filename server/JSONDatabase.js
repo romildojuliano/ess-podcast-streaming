@@ -39,6 +39,15 @@ class JSONDatabase {
     return data ? (data[key]|| []) : [];
   }
 
+  updateRegisters(PK, newData){
+    newData.forEach(element => {
+      const data = this.readData();
+      const id = data.findIndex(row => row[PK] === element[PK]);
+      data[id] = element;
+      this.writeData(data)
+    });
+  }
+
   getAllMatchingNames(pattern) {
     const data = this.readData();
     const filteredData = Object.values(data).filter(obj => {
