@@ -39,7 +39,7 @@ function RegisterGroup () {
                 marginLeft="35%" 
                 w="60%" 
                 alignSelf="center"
-            >Criar conta</Button>
+            ><Link href="/login">Criar conta</Link></Button>
         </Stack>
     );
 }
