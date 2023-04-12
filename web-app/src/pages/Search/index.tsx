@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import SearchList from './searchList';
-import Scroll from './scroll';
+import SearchList from '../../components/searchList';
+import Scroll from '../../components/scroll';
 
 let query;
 

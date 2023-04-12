@@ -2,19 +2,10 @@ import { Center, Image, Input, Box, Button, FormControl, Stack, VStack, Link, Fo
 import podshare_logo from '../../styles/assets/podshare-logo.svg';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { IUser } from "../../models/User";
 
 const border = "0px";
 
-interface IUser {
-    email: string;
-    username: string;
-    password: string;
-    created_at: string;
-    followers: string[];
-    following: string[];
-    history: string[];
-  }
 
 function LoginGroup () {
     const [username, setUsername] = useState('');
