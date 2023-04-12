@@ -142,7 +142,7 @@ export default function UserPage(){
           <Image src={podcast.image} alt="podcast image" boxSize="200px" minHeight="200px" objectFit="cover" borderRadius="10px"/>
           <Heading marginTop="10px" fontSize="20px">{podcast.name}</Heading>
           <Text>{podcast.subject}</Text>
-          <Link href={podcast.link}>Ver podcast</Link>
+          <Link href={`http://localhost:3000/podcast/${podcast.name}`}>Ver podcast</Link>
         </Flex>
       )}
       </Flex>
