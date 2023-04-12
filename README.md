@@ -16,38 +16,71 @@ Romildo Juliano de Almeida Lira | romildojuliano | rjal@cin.ufpe.br
 
 </details>
 
-### Dependências
+## Dependências
+
+<details>
+
+### Front-end
 
 - React
-- Node
-- npm
+- JavaScript e TypeScript
+- Chakra-ui
+- Figma
 
-### Instalando dependências 
+### Back-end
+
+- Node.js
+- Express
+- Mocha
+- JSON
+
+### Testes
+
+- Cucumber
+- Supertest
+- Protractor
+- Selenium
+- Webdriver Manager
+
+</details>
+
+## Como rodar o projeto
+
+### Instalar npm
+
 ```
 sudo apt install npm
 ```
 
 ### Modificando a versão do Node
+
 ```
 sudo npm install -g n
 n 14.15
 ```
 
-### Iniciando o projeto
+### Instalando pendências dentro das pastas
+
 ```
 cd web-app
 sudo npm install
+
 cd ..
 cd server
 sudo npm install
 ```
-### Rodando o projeto
-Iniciar o servidor
+
+Instruções para rodar os testes se encontram [aqui](https://github.com/mattvie/ess-podcast-streaming/tree/master/test-acceptance).
+
+### Iniciando o servidor
+
 ```
 cd server
-npm start
+npm run dev
 ```
-Iniciando o frontend
+
+### Iniciando o cliente
+
 ```
 cd web-app
 npm start
