@@ -21,30 +21,15 @@ import {
 import {WarningIcon} from "@chakra-ui/icons";
 import { useClickable } from "@chakra-ui/clickable";
 import {chakra} from "@chakra-ui/react";
-
+import { IUser } from "../../models/User";
+import { IPodcast } from "../../models/Podcast";
 const Clickable = (props: any) => {
   const clickable = useClickable(props)
   return <chakra.button display="" {...clickable} />
 }
 
-interface IUser {
-  email: string;
-  username: string;
-  password: string;
-  created_at: string;
-  followers: string[];
-  following: string[];
-  history: string[];
-}
 
-type Podcast  = {
-  name: string,
-  link?: string,
-  author?: string,
-  subject?: string,
-  created_at?: string,
-  image?: string,
-}
+
 export default function FavoritesPage(){
   const [userData, setUserData] = useState<IUser>({
     email: '',
@@ -55,7 +40,7 @@ export default function FavoritesPage(){
     following: [],
     history: []
   });
-  const [favorites, setUserFavorites] = useState<Podcast[]>()
+  const [favorites, setUserFavorites] = useState<IPodcast[]>()
   const [loggedUser, setLoggedUser] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -76,7 +61,7 @@ export default function FavoritesPage(){
     //  setLoading(false);
   }, [loggedUser, loading]);
  
-  const openPodcastPage = async (favorite : Podcast) => {
+  const openPodcastPage = async (favorite : IPodcast) => {
     navigate(
       `/podcast/${favorite.name}`,{
       state: {

@@ -18,23 +18,8 @@ import {
 } from '@chakra-ui/react';
 import { useParams } from "react-router-dom";
 import pfp from '../../styles/assets/nopfp.png'
-
-interface IUser {
-  email: string;
-  username: string;
-  password: string;
-  created_at: string;
-  followers: string[];
-  following: string[];
-  history: string[];
-}
-
-interface IPodcast {
-  name: string;
-  link: string;
-  subject: string;
-  image: string;
-}
+import { IUser } from "../../models/User";
+import { IPodcast  } from "../../models/Podcast";
 
 export default function UserPage(){
   const { username } = useParams();
@@ -157,7 +142,7 @@ export default function UserPage(){
           <Image src={podcast.image} alt="podcast image" boxSize="200px" minHeight="200px" objectFit="cover" borderRadius="10px"/>
           <Heading marginTop="10px" fontSize="20px">{podcast.name}</Heading>
           <Text>{podcast.subject}</Text>
-          <Link href={podcast.link}>Ver podcast</Link>
+          <Link href={`http://localhost:3000/podcast/${podcast.name}`}>Ver podcast</Link>
         </Flex>
       )}
       </Flex>
