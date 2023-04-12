@@ -1,5 +1,5 @@
 import React from 'react';
-import UserCard from './card';
+import UserCard from './userCard';
 import {SimpleGrid} from '@chakra-ui/react'
 
 function SearchList({ filteredPersons }) {

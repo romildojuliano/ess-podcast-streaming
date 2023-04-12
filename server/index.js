@@ -18,7 +18,7 @@ require('./routes/favorites')(app);
 require('./routes/follow.routes')(app);
 require('./userData')(app);
 require('./podcasts')(app);
-require('./search')(app, db);
+require('./routes/search')(app);
 require('./history')(app);
 
 app.get('/', (req, res) => {
