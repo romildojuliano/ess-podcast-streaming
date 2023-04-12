@@ -7,13 +7,11 @@ import {
   Link,
 } from '@chakra-ui/react';
 import pfp from '../../styles/assets/nopfp.png'
+import { FollowingUser } from "../../models/FollowingUser";
 
-interface IUser {
-  following: string[];
-}
 
 export default function UserPage(){
-  const [userData, setUserData] = useState<IUser>({
+  const [userData, setUserData] = useState<FollowingUser>({
     following: []
   });
   const [loggedUser, setLoggedUser] = useState('')

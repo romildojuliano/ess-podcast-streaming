@@ -17,21 +17,13 @@ import {
 
 import { Star, StarOff } from '../../utils/StarIcons';
 import { Previous,Play,Next} from '../../Icons';
-
-type Podcast  = {
-  name: string,
-  link?: string,
-  author?: string,
-  subject?: string,
-  created_at?: string,
-  image?: string,
-}
+import { IPodcast } from "../../models/Podcast";
 
 export default function PodcastPage(){
   const { podcast } = useParams();
-  const [favorites, setUserFavorites] = useState<Podcast[]>()
+  const [favorites, setUserFavorites] = useState<IPodcast[]>()
   const props  = useLocation().state;
-  const [podcastData, setPodcastData] = useState<Podcast>({
+  const [podcastData, setPodcastData] = useState<IPodcast>({
     name: props?.podcast?.name || podcast || '',
     link: props?.podcast?.link || '',
     author: props?.podcast?.author || '',

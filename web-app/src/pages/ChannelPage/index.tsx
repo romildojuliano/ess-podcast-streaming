@@ -22,23 +22,9 @@ import {
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import pfp from "../../styles/assets/nopfp.png";
+import { IUser } from "../../models/User";
+import { IPodcast  } from "../../models/Podcast";
 
-interface IUser {
-  email: string;
-  username: string;
-  password: string;
-  created_at: string;
-  followers: string[];
-  following: string[];
-  history: string[];
-}
-
-interface IPodcast {
-  name: string;
-  link: string;
-  subject: string;
-  image: string;
-}
 
 export default function ChannelPage() {
   const { username } = useParams();
